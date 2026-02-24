@@ -16,7 +16,7 @@ Current Version 5.6
 ## Core Plugins
 Plugins that are essential for the core functionality of the equipment system and that are based on official learning and demo content.
 - **feature-async-mixin:** C++ utility class for managing asynchronous operations like loading.
-- **feature-common-loading-screen:** Common loading screen implementation.
+- **feature-common-loading-screen:** Loading screen manager handling creation and display of a project-specified loading screen widget.
 - **feature-common-user:** Common user interface and functionality.
 - **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
 - **feature-game-settings:** System for defining game-specific settings and exposing them to the UI.
