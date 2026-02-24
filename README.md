@@ -16,3 +16,4 @@ Current Version 5.6
 - **feature-async-mixin:** Implements asynchronous loading and management of equipment assets using Unreal Engine's Async Loading System.
 - **feature-common-loading-screen:** Common loading screen implementation.
 - **feature-common-user:** Common user interface and functionality.
+- **feature-gameplay-message-router:** Gameplay Message Router plugin for efficient communication between game systems.
