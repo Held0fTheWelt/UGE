@@ -14,6 +14,7 @@ Current Version 5.6
 ## CorePlugins
 - **feature-common-user:** Provides gameplay code and blueprint wrappers for online and platform operations.
 - **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
+- **feature-game-subtitles:** Game support for playing subtitles attached to media player assets.
 
 ## Main Plugin Branches
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
@@ -21,4 +22,3 @@ Current Version 5.6
 
 ## Editor Branches
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
-
