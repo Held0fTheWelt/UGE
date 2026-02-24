@@ -1,0 +1,133 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Elemental_Collection",
+	"Description": "Elemental Core Implementations",
+	"Category": "Core",
+	"CreatedBy": "Yves Tanas",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"name": "Elemental_Classes",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Editor",
+			"type": "Editor",
+			"loadingPhase": "PostEngineInit"
+		},
+		{
+			"name": "Elemental_Data",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Interfaces",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Logging",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Structure",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Network",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Common",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Settings",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Player",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_Teams",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "Elemental_MessageSystem",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "GameplayMessageRouter",
+			"Enabled": true
+		},
+		{
+			"Name": "ModularGameplay",
+			"Enabled": true
+		},
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		},
+		{
+			"Name": "GameFeatures",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
+		},
+		{
+			"Name": "ChaosVehiclesPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "SignificanceManager",
+			"Enabled": true
+		},
+		{
+			"Name": "ReplicationGraph",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUser",
+			"Enabled": true
+		},
+		{
+			"Name": "LoggingMacros",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetLoader",
+			"Enabled": true
+		},
+		{
+			"Name": "GameSubtitles",
+			"Enabled": true
+		}
+	]
+}
