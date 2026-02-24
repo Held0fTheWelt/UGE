@@ -9,3 +9,6 @@ Current Version 5.6
 ## Main Branches 
 - **master:** Stable version for production use.
 - **EMPTY_BASE:** Empty base version for having clean branches to branch out from.
+
+## Core Plugins
+- **feature-pocket-worlds:** Core plugin for pocket worlds functionality.
