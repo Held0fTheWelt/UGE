@@ -18,7 +18,7 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-async-mixin:** Implements asynchronous loading and management of equipment assets using Unreal Engine's Async Loading System.
 - **feature-common-loading-screen:** Common loading screen implementation.
 - **feature-common-user:** Common user interface and functionality.
-- **feature-gameplay-message-router:** Gameplay Message Router plugin for efficient communication between game systems.
+- **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
 - **feature-game-settings:** System for defining game-specific settings and exposing them to the UI.
 - **feature-game-subtitles:** Game support for playing subtitles attached to media player assets.
 - **feature-pocket-worlds:** Pocket Worlds
