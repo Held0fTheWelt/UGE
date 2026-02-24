@@ -35,5 +35,8 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-ships:** Adds functionality for ship management and interactions in the game.
 - **feature-vehicles:** Adds support for vehicles in the game, including mechanics and interactions.
 
+## GameFeature Branches
+- **feature-GF-humanoid-movement:** Implements humanoid movement mechanics and animations for characters in the game.
+
 ## Editor Branches
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
