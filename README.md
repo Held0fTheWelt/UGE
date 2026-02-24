@@ -9,10 +9,18 @@ Current Version 5.6
 ## Main Branches 
 - **master:** Stable version for production use.
 - **EMPTY_BASE:** Empty base version for having clean branches to branch out from.
+- **build:** Contains the latest buildconfiguration of the project.
+
+## CorePlugins
+- **feature-common-user:** Provides gameplay code and blueprint wrappers for online and platform operations.
+- **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
+- **feature-game-subtitles:** Game support for playing subtitles attached to media player assets.
 
 ## Main Plugin Branches
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
 - **feature-input-system:** Develops a custom input system for handling player controls and interactions.
+- **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
+- **feature-controllers:** 
 
 ## Editor Branches
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
