@@ -29,6 +29,7 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-core-collection:** Implements a core collection system for managing game data and resources.
 - **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
 - **feature-input-system:** Develops a custom input system for handling player controls and interactions.
+- **feature-humanoids:** Adds support for humanoid characters, including animations and interactions.
 
 ## Editor Branches
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
