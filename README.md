@@ -30,6 +30,7 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
 - **feature-input-system:** Develops a custom input system for handling player controls and interactions.
 - **feature-humanoids:** Adds support for humanoid characters, including animations and interactions.
+- **feature-helicopters:** Adds support for helicopter vehicles in the game, including mechanics and controls.
 
 ## Editor Branches
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
