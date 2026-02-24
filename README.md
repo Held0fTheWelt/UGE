@@ -12,4 +12,4 @@ Current Version 5.6
 - **build:** Contains the latest buildconfiguration of the project.
 
 ## CorePlugins
-- **feature-gameplay-message-router:** Gameplay Message Router plugin for efficient communication between game systems.
+- **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
