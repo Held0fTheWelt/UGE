@@ -26,6 +26,9 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-game-subtitles:** A plugin for managing in-game subtitles.
 - **feature-pocket-worlds:** Core plugin for pocket worlds functionality.
 
+- ## Main Plugin Branches
+- **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
+
 ## Editor Branches
 - **feature-editor-manager:** Main branch for editor development.
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
