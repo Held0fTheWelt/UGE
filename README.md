@@ -22,6 +22,7 @@ Current Version 5.6
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
 - **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
 - **feature-core-collection:** Implements a core collection system for managing game data and resources.
+- **feature-helicopters:** Adds support for helicopter vehicles in the game, including mechanics and controls.
 
 ## Editor Branches
 - **feature-editor-manager:** Main branch for editor development.
