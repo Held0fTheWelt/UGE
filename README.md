@@ -22,5 +22,8 @@ Current Version 5.6
 - **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
 - **feature-core-collection:** Implements a core collection system for managing game data and resources.
 
+## GameFeature Branches
+- **feature-GF-humanoid-movement:** Implements humanoid movement mechanics and animations for characters in the game.
+
 ## Editor Branches
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
