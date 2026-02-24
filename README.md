@@ -13,3 +13,4 @@ Current Version 5.6
 
 ## Editor Branches
 - **feature-editor-manager:** Main branch for editor development.
+- **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
