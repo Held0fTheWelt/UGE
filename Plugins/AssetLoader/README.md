@@ -1,6 +1,7 @@
 # AssetLoader
 
-A runtime plugin for data-driven, asynchronous asset loading. It decouples asset consumers from asset discovery by routing all loading through **Primary Data Assets**, **DataTables**, and a two-tier definition hierarchy.
+A runtime plugin for data-driven, asynchronous asset loading. It decouples asset consumers from asset discovery by routing all loading through 
+**Primary Data Assets**, **DataTables**, and a two-tier definition hierarchy.
 
 ---
 
@@ -15,7 +16,8 @@ PrimaryDataAssetSet
         └── GetAssetObjects() → TSoftObjectPtr[]
 ```
 
-The `UPrimaryDataAssetSet` is the entry point. It groups a collection of `UPreLoadingDataAsset` instances. Each `UPreLoadingDataAsset` exposes the concrete soft references that ultimately get streamed in. The plugin handles everything in between: async loads, GC protection, and event broadcasting.
+The `UPrimaryDataAssetSet` is the entry point. It groups a collection of `UPreLoadingDataAsset` instances. Each `UPreLoadingDataAsset` 
+exposes the concrete soft references that ultimately get streamed in. The plugin handles everything in between: async loads, GC protection, and event broadcasting.
 
 ---
 
@@ -57,7 +59,8 @@ All Primary Data Assets must be registered in `DefaultGame.ini` under `[/Script/
 
 ### 4. (Optional) Actor/Component Definitions
 
-For `ADT_ACTOR` or `ADT_COMPONENT`, create a `UActorDefinitionPrimaryDataAsset` or `UComponentDefinitionPrimaryDataAsset` pointing to a `UDataTable` (row type `FActorDefinitionTable` / `FComponentDefinitionTable`). Each row maps a `FName` to a set of definition data assets via `FActorAndComponentSelector`.
+For `ADT_ACTOR` or `ADT_COMPONENT`, create a `UActorDefinitionPrimaryDataAsset` or `UComponentDefinitionPrimaryDataAsset` pointing to a `UDataTable` 
+(row type `FActorDefinitionTable` / `FComponentDefinitionTable`). Each row maps a `FName` to a set of definition data assets via `FActorAndComponentSelector`.
 
 ---
 
