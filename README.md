@@ -12,6 +12,7 @@ Current Version 5.6
 - **build:** Contains the latest buildconfiguration of the project.
 
 ## CorePlugins
+- **feature-common-user:** Provides gameplay code and blueprint wrappers for online and platform operations.
 - **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
 
 ## Main Plugin Branches
