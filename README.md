@@ -21,7 +21,7 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-gameplay-message-router:** Gameplay Message Router plugin for efficient communication between game systems.
 - **feature-game-settings:** Game settings management.
 - **feature-game-subtitles:** A plugin for managing in-game subtitles.
-- **feature-pocket-worlds:** Core plugin for pocket worlds functionality.
+- **feature-pocket-worlds:** Pocket Worlds
 
 - ## Main Plugin Branches
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
