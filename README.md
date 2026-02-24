@@ -26,7 +26,7 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-game-subtitles:** Game support for playing subtitles attached to media player assets.
 - **feature-pocket-worlds:** Pocket Worlds
 
-- ## Main Plugin Branches
+## Main Plugin Branches
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
 - **feature-input-system:** Develops a custom input system for handling player controls and interactions.
 
