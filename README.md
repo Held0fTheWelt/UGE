@@ -26,6 +26,7 @@ Plugins that are essential for the core functionality of the equipment system an
 ## Main Plugin Branches
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
 - **feature-input-system:** Develops a custom input system for handling player controls and interactions.
+- **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
 
 ## Editor Branches
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
