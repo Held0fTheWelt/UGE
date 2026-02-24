@@ -42,4 +42,3 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-editor-manager:** Main branch for editor development.
 - **feature-editor-entity-core:** Branch for entity core editor development and debugging.
 - **feature-editor-entity-visualizer**: Branch for entity visualizer and debugging.
-- **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
