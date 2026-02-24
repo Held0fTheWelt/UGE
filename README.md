@@ -18,3 +18,4 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-common-loading-screen:** Common loading screen implementation.
 - **feature-common-user:** Common user interface and functionality.
 - **feature-gameplay-message-router:** Gameplay Message Router plugin for efficient communication between game systems.
+- **feature-game-settings:** Game settings management.
