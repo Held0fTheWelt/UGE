@@ -12,4 +12,4 @@ Current Version 5.6
 - **build:** Contains the latest buildconfiguration of the project.
 
 ## CorePlugins
-- **feature-common-user:** Common user interface and functionality.
+- **feature-common-user:** Provides gameplay code and blueprint wrappers for online and platform operations.
