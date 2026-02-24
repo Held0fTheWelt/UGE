@@ -6,8 +6,12 @@ Current Version 5.6
 
 ## Features
 
-## Branches 
+## Main Branches 
 - **master:** Stable version for production use.
 - **EMPTY_BASE:** Empty base version for having clean branches to branch out from.
 - **config:** Contains configuration files for the project.
 - **feature-all:** All features merged for testing and development.
+
+## Core Plugins - Plugins that are essential for the core functionality of the equipment system and that are based on official learning and demo content.
+- **feature-async-mixin:** Implements asynchronous loading and management of equipment assets using Unreal Engine's Async Loading System.
+
