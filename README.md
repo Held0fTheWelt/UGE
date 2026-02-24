@@ -19,6 +19,7 @@ Current Version 5.6
 ## Main Plugin Branches
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
 - **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
+- **feature-core-collection:** Implements a core collection system for managing game data and resources.
 
 ## Editor Branches
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
