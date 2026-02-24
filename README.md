@@ -13,3 +13,4 @@ Current Version 5.6
 
 ## Editor Branches
 - **feature-editor-manager:** Main branch for editor development.
+- **feature-editor-entity-core:** Branch for entity core editor development and debugging.
