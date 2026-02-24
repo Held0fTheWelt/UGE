@@ -17,6 +17,7 @@ Current Version 5.6
 - **feature-game-subtitles:** Game support for playing subtitles attached to media player assets.
 
 ## Main Plugin Branches
+- **feature-aircrafts:** Implements aircraft-related functionality and mechanics in the game.
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
 - **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
 - **feature-core-collection:** Implements a core collection system for managing game data and resources.
