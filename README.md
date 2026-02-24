@@ -14,6 +14,7 @@ Current Version 5.6
 ## CorePlugins
 - **feature-common-user:** Provides gameplay code and blueprint wrappers for online and platform operations.
 - **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
+- **feature-game-settings:** System for defining game-specific settings and exposing them to the UI.
 - **feature-game-subtitles:** Game support for playing subtitles attached to media player assets.
 
 ## Main Plugin Branches
