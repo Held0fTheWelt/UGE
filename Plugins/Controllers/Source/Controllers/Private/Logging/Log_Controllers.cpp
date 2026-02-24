@@ -1,0 +1,9 @@
+#include "Logging/Log_Controllers.h"
+
+DEFINE_LOG_CATEGORY(Log_AssetManagedController);
+DEFINE_LOG_CATEGORY(Log_InputLoadingController);
+
+DEFINE_LOG_CATEGORY(Log_UnifiedController);
+DEFINE_LOG_CATEGORY(Log_UnifiedController_Setup);
+DEFINE_LOG_CATEGORY(Log_UnifiedController_Register);
+DEFINE_LOG_CATEGORY(Log_UnifiedController_Controls);
