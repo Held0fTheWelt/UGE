@@ -12,4 +12,4 @@ Current Version 5.6
 - **build:** Contains the latest buildconfiguration of the project.
 
 ## Core Plugins
-- **feature-common-loading-screen:** Common loading screen implementation.
+- **feature-common-loading-screen:** Loading screen manager handling creation and display of a project-specified loading screen widget.
