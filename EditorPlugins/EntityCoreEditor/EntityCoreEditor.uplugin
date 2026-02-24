@@ -1,0 +1,63 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "EntityCoreEditor",
+	"Description": "",
+	"Category": "Core Editor",
+	"CreatedBy": "",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"name": "EntityCoreRuntime",
+			"type": "Runtime",
+			"loadingPhase": "Default"
+		},
+		{
+			"name": "EntityCoreEditor",
+			"type": "Editor",
+			"loadingPhase": "PostEngineInit"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "LoggingMacros",
+			"Enabled": true
+		},
+		{
+			"Name": "EditorManager",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetLoader",
+			"Enabled": true
+		},
+		{
+			"Name": "Elemental_Collection",
+			"Enabled": true
+		},
+		{
+			"Name": "Core_Collection",
+			"Enabled": true
+		},
+		{
+			"Name": "Aircrafts",
+			"Enabled": true
+		},
+		{
+			"Name": "Helicopters",
+			"Enabled": true
+		},
+		{
+			"Name": "Warfare",
+			"Enabled": false
+		}
+	]
+}
