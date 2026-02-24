@@ -27,12 +27,16 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-pocket-worlds:** Pocket Worlds
 
 ## Main Plugin Branches
+- **feature-aircrafts:** Implements aircraft-related functionality and mechanics in the game.
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
 - **feature-controllers:** Provides the player controller hierarchy for the UGE project 
 - **feature-core-collection:** Implements a core collection system for managing game data and resources.
 - **feature-elemental-collection:** Adds functionality for elemental resources and classes in the game.
 - **feature-input-system:** Develops a custom input system for handling player controls and interactions.
+- **feature-helicopters:** Adds support for helicopter vehicles in the game, including mechanics and controls.
 
 ## Editor Branches
 - **feature-editor-manager:** Main branch for editor development.
+- **feature-editor-entity-core:** Branch for entity core editor development and debugging.
+- **feature-editor-entity-visualizer**: Branch for entity visualizer and debugging.
 - **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
