@@ -15,7 +15,7 @@ Current Version 5.6
 
 ## Core Plugins
 Plugins that are essential for the core functionality of the equipment system and that are based on official learning and demo content.
-- **feature-async-mixin:** Implements asynchronous loading and management of equipment assets using Unreal Engine's Async Loading System.
+- **feature-async-mixin:** C++ utility class for managing asynchronous operations like loading.
 - **feature-common-loading-screen:** Common loading screen implementation.
 - **feature-common-user:** Common user interface and functionality.
 - **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
