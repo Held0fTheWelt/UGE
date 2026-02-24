@@ -9,3 +9,4 @@ Current Version 5.6
 ## Branches 
 - **Master:** Stable version for production use.
 - **EMPTY_BASE:** Empty base version for having clean branches to branch out from.
+- **Config:** Contains configuration files for the project.
