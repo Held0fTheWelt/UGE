@@ -1,0 +1,6 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="512" cy="512" r="512" fill="black"/>
+  <text x="50%" y="66%" text-anchor="middle" fill="white"
+        font-family="Georgia, serif" font-size="700" font-weight="bold"
+        dominant-baseline="middle">Y</text>
+</svg>
