@@ -12,6 +12,7 @@ Current Version 5.6
 - **config:** Contains configuration files for the project.
 - **build:** Contains the latest buildconfiguration of the project.
 - **feature-all:** All features merged for testing and development.
+- **feature-editor-all:** Branch for all editor-related features, including the manager and other editor tools.
 - **dev:** Active development branch for new features and bug fixes.
 - **staging:** Pre-release branch for final testing before merging into master.
 
@@ -24,3 +25,6 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-game-settings:** Game settings management.
 - **feature-game-subtitles:** A plugin for managing in-game subtitles.
 - **feature-pocket-worlds:** Core plugin for pocket worlds functionality.
+
+## Editor Branches
+- **feature-editor-manager:** Main branch for editor development.
