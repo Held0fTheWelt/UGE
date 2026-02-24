@@ -13,4 +13,4 @@ Saved
 *.xcodeproj
 *.xcworkspace
 .vsconfig
-Build/Scripts/*
+/Build/Scripts
