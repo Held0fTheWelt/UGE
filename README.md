@@ -11,3 +11,4 @@ Current Version 5.6
 - **EMPTY_BASE:** Empty base version for having clean branches to branch out from.
 - **config:** Contains configuration files for the project.
 - **feature-all:** All features merged for testing and development.
+- **dev:** Active development branch for new features and bug fixes.
