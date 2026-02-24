@@ -32,6 +32,7 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-input-system:** Develops a custom input system for handling player controls and interactions.
 - **feature-humanoids:** Adds support for humanoid characters, including animations and interactions.
 - **feature-helicopters:** Adds support for helicopter vehicles in the game, including mechanics and controls.
+- **feature-ships:** Adds functionality for ship management and interactions in the game.
 - **feature-vehicles:** Adds support for vehicles in the game, including mechanics and interactions.
 
 ## Editor Branches
