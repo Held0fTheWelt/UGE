@@ -24,3 +24,7 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-game-settings:** Game settings management.
 - **feature-game-subtitles:** A plugin for managing in-game subtitles.
 - **feature-pocket-worlds:** Core plugin for pocket worlds functionality.
+
+## Editor Branches
+- **feature-editor-manager:** Main branch for editor development.
+- **feature-editor-logging-macros:** Adds logging macros for better debugging and tracking in the editor.
