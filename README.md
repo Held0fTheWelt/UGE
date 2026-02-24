@@ -18,16 +18,17 @@ Current Version 5.6
 
 ## Core Plugins
 Plugins that are essential for the core functionality of the equipment system and that are based on official learning and demo content.
-- **feature-async-mixin:** Implements asynchronous loading and management of equipment assets using Unreal Engine's Async Loading System.
-- **feature-common-loading-screen:** Common loading screen implementation.
-- **feature-common-user:** Common user interface and functionality.
-- **feature-gameplay-message-router:** Gameplay Message Router plugin for efficient communication between game systems.
-- **feature-game-settings:** Game settings management.
-- **feature-game-subtitles:** A plugin for managing in-game subtitles.
-- **feature-pocket-worlds:** Core plugin for pocket worlds functionality.
+- **feature-async-mixin:** C++ utility class for managing asynchronous operations like loading.
+- **feature-common-loading-screen:** Loading screen manager handling creation and display of a project-specified loading screen widget.
+- **feature-common-user:** Provides gameplay code and blueprint wrappers for online and platform operations.
+- **feature-gameplay-message-router:** A subsystem that allows registering for and sending messages between unconnected gameplay objects.
+- **feature-game-settings:** System for defining game-specific settings and exposing them to the UI.
+- **feature-game-subtitles:** Game support for playing subtitles attached to media player assets.
+- **feature-pocket-worlds:** Pocket Worlds
 
 - ## Main Plugin Branches
 - **feature-asset-loader:** Implements an asset loader for efficient management of game assets.
+- **feature-input-system:** Develops a custom input system for handling player controls and interactions.
 
 ## Editor Branches
 - **feature-editor-manager:** Main branch for editor development.
