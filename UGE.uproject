@@ -18,5 +18,15 @@
 				"Editor"
 			]
 		}
+	],
+	"AdditionalPluginDirectories": [
+		"AssetPlugins",
+		"CorePlugins",
+		"EditorPlugins",
+		"WidgetPlugins",
+		"SamplePlugins"
+	],
+	"TargetPlatforms": [
+		"Windows"
 	]
 }
