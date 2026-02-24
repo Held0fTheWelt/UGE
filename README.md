@@ -14,6 +14,7 @@ Current Version 5.6
 - **feature-all:** All features merged for testing and development.
 - **feature-editor-all:** Branch for all editor-related features, including the manager and other editor tools.
 - **dev:** Active development branch for new features and bug fixes.
+- **llm-generated**: Branch for LLM-related content.
 
 ## Core Plugins
 Plugins that are essential for the core functionality of the equipment system and that are based on official learning and demo content.
