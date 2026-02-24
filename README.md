@@ -19,3 +19,4 @@ Plugins that are essential for the core functionality of the equipment system an
 - **feature-common-user:** Common user interface and functionality.
 - **feature-gameplay-message-router:** Gameplay Message Router plugin for efficient communication between game systems.
 - **feature-game-settings:** Game settings management.
+- **feature-game-subtitles:** A plugin for managing in-game subtitles.
