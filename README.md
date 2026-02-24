@@ -12,4 +12,4 @@ Current Version 5.6
 - **build:** Contains the latest buildconfiguration of the project.
 
 ## Core Plugins
-- **feature-game-subtitles:** A plugin for managing in-game subtitles.
+- **feature-game-subtitles:** Game support for playing subtitles attached to media player assets.
