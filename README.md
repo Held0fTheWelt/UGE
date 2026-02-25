@@ -11,6 +11,7 @@ The project is structured in dependency layers. Lower layers have no knowledge o
 ┌─────────────────────────────────────────────────────────┐
 │  Game Features          GameFeature_HumanoidMovement    │
 │                         GameFeature_Interact            │
+│                         GameFeature_PhysicalAwareness   │
 ├─────────────────────────────────────────────────────────┤
 │  Equipment Plugins      Humanoids · Helicopters ·       │
 │                         Vehicles · Ships · Aircrafts    │
@@ -218,6 +219,28 @@ Modules:
 
 **Logging categories:** `Log_Interact`, `Log_Interact_Debug`, `Log_Interact_Setup`, `Log_Interact_Widget`, `Log_Interact_Class`
 
+#### GameFeature_PhysicalAwareness
+Collision-driven touch-sense system. Lets any pawn detect, track, and query physically overlapping actors.
+Module: `GameFeature_PhysicalAwarenessRuntime` (Runtime, Default).
+State: **Active by default** (`BuiltInInitialFeatureState: Active`).
+
+**Core component — `UPhysicalAwarenessSenseComponent`** (`UPawnDrivingActorComponent_Base` + `IPhysicalSenseInterface`):
+- Retrieves the pawn's collision primitive via `ISceneComponentCatchInterface` ("Collision" slot)
+- On overlap begin: if the overlapping component implements `IInteractControlInterface` and does **not** carry `INoTouchCollisionInterface`, the actor is added to `TouchableActors` via `RegisterObject()`
+- On overlap end: actor removed via `ForgetObject()`, `CurrentTouchedActor` cleared if needed
+- `IPhysicalSenseInterface` query surface: `CanTouchActor()`, `CanTouchCurrentActor()`, `IsTouchingCurrentActor()`, `SetTouchingCurrentActor()`, `GetCurrentTouchActor()`, `GetTouchableActors()`
+- All tracking can be enabled/disabled at runtime via `SetCollisionComponentActive()`
+
+**Data asset — `UPhysicalAwarenessSenseDataAsset`** (Primary asset type `"PhysicalAwareness"`, extends `UPreLoadingDataAsset`):
+
+| Property | Purpose |
+|----------|---------|
+| `bDoesTrackActorsForGameManagement` | Master switch — disables collision component when `false` |
+| `bCanSenseActors` | Whether sensing queries return results |
+| `bCanTouchActors` | Whether touch interactions are permitted |
+
+**Logging categories:** `Log_PhysicalSenseComponent`, `Log_PhysicalSenseComponent_Setup`, `Log_PhysicalSenseComponent_Runtime`
+
 ---
 
 ## Build Targets
@@ -240,8 +263,6 @@ All targets share settings via `UGEGameTarget.ApplySharedTargetSettings()`.
 Shared settings: logging enabled in Shipping, RHI resource tracking in Test, `ASSETREGISTRY_INDIRECT_ASSETDATA_POINTERS` in non-Editor builds, Game Feature plugin auto-configuration.
 
 Additional plugin search paths: `AssetPlugins`, `CorePlugins`, `EditorPlugins`, `WidgetPlugins`, `SamplePlugins`.
-
----
 
 ## Branch Strategy
 
@@ -280,6 +301,7 @@ Additional plugin search paths: `AssetPlugins`, `CorePlugins`, `EditorPlugins`, 
 |--------|---------|
 | `feature-GF-humanoid-movement` | GameFeature_HumanoidMovement |
 | `feature-GF-interact` | GameFeature_Interact |
+| `feature-GF-physical-awareness` | GameFeature_PhysicalAwareness |
 
 ### Editor Branches
 | Branch | Purpose |
