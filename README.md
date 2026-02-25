@@ -10,6 +10,7 @@ The project is structured in dependency layers. Lower layers have no knowledge o
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Game Features          GameFeature_HumanoidMovement    │
+│                         GameFeature_Interact            │
 ├─────────────────────────────────────────────────────────┤
 │  Equipment Plugins      Humanoids · Helicopters ·       │
 │                         Vehicles · Ships · Aircrafts    │
@@ -182,6 +183,41 @@ Adds humanoid movement mechanics (walking, running, jumping animations and input
 Module: `GameFeature_HumanoidMovementRuntime` (Runtime, Default).
 State: **Active by default** (`BuiltInInitialFeatureState: Active`).
 
+#### GameFeature_Interact
+Proximity-based interaction system. Adds collision-driven interaction zones, UI feedback, and pawn-swapping support to any actor.
+
+Modules:
+
+| Module | Type | Purpose |
+|--------|------|---------|
+| `GameFeature_InteractRuntime` | Runtime | Interaction logic, collision, widgets |
+| `GameFeature_InteractSetup` | Editor/Setup | Settings and editor customization |
+
+**Core component — `UInteractCollisionComponent`:**
+- Manages one or more box collision components (`QueryOnly`, `ECC_GameTraceChannel2`) that detect pawn overlaps
+- On overlap begin: registers with the player controller (`IRegisterComponentInterface`), shows the interaction widget, and registers the object with the pawn's sense systems (touch + visual)
+- On overlap end: unregisters from the controller, removes the widget, and forgets the object from sense systems
+- On Interact input (`IInteractControlInterface::Interact`): broadcasts `FOnInteractWithPawn` to the owner actor
+- Configurable interaction limit (global default via `UGameFeature_Interact_Settings`, per-component override)
+- Collision shape loaded from `UCollisionBoxConfigDataAsset`; supports 90° rotation variants
+
+**Widget system:**
+- `UInteractUserWidgetBase` — base widget class implementing `IInteractWidgetInterface` (`SetImage`, `SetText`)
+- Widget class loaded from `UWidgetDefinitionDataAsset`; icon texture from `UActorUIImageDataAsset`
+- Added/removed from viewport dynamically on proximity enter/exit
+
+**Pawn-swapping integration (`InteractManageGameInstanceSubsystem`):**
+- Enter vehicle: unpossesses current pawn → possesses vehicle pawn
+- Exit vehicle: spawns default pawn at vehicle location → unpossesses vehicle → possesses new pawn
+- Dummy-to-real replacement: swaps `IInteractDummyInterface` placeholder actors with defined actor types
+
+**Settings (`UGameFeature_Interact_Settings`):**
+- Global debug mode for collision query visualization
+- Configurable default interaction limit
+- Overridable via `DefaultGame.ini`
+
+**Logging categories:** `Log_Interact`, `Log_Interact_Debug`, `Log_Interact_Setup`, `Log_Interact_Widget`, `Log_Interact_Class`
+
 ---
 
 ## Build Targets
@@ -243,6 +279,7 @@ Additional plugin search paths: `AssetPlugins`, `CorePlugins`, `EditorPlugins`, 
 | Branch | Feature |
 |--------|---------|
 | `feature-GF-humanoid-movement` | GameFeature_HumanoidMovement |
+| `feature-GF-interact` | GameFeature_Interact |
 
 ### Editor Branches
 | Branch | Purpose |
