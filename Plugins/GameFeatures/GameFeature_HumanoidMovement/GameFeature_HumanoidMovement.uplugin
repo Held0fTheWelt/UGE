@@ -28,10 +28,6 @@
 		{
 			"Name": "Elemental_Collection",
 			"Enabled": true
-		},
-		{
-			"Name": "HumanoidPlugin",
-			"Enabled": true
 		}
 	]
 }
