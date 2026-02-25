@@ -1,29 +1,29 @@
 # GameFeature_Interact
 
-Unreal Engine **5.6** — Game Feature Plugin im UGE-Framework.
+Unreal Engine **5.6** — Game Feature Plugin in the UGE Framework.
 
-Stellt ein kollisionsbasiertes Interaktionssystem bereit: Akteure können Interaktionszonen definieren, die bei Annäherung eines Pawns ein UI-Widget einblenden, den Controller registrieren, Sense-Systeme informieren und auf den Interact-Input reagieren.
+Provides a collision-based interaction system: actors can define interaction zones that display a UI widget when a pawn approaches, register with the controller, notify sense systems, and respond to Interact input.
 
 ---
 
-## Plugin-Konfiguration
+## Plugin Configuration
 
-| Eigenschaft | Wert |
-|-------------|------|
-| Module | `GameFeature_InteractRuntime` (Runtime, Default) · `GameFeature_InteractSetup` (Runtime, Default) |
+| Property | Value |
+|----------|-------|
+| Modules | `GameFeature_InteractRuntime` (Runtime, Default) · `GameFeature_InteractSetup` (Runtime, Default) |
 | Initial State | **Active** (`BuiltInInitialFeatureState: Active`) |
-| Explizit geladen | `true` |
+| Explicitly loaded | `true` |
 | Sealed | `false` |
 
-**Plugin-Abhängigkeiten:** `AssetLoader` · `Elemental_Collection` · `Core_Collection` · `Warfare_Assets` · `Vehicles_Test_Assets`
+**Plugin dependencies:** `AssetLoader` · `Elemental_Collection` · `Core_Collection` · `Warfare_Assets` · `Vehicles_Test_Assets`
 
 ---
 
-## Einordnung im UGE-Layer-Modell
+## Position in the UGE Layer Model
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│  Game Features      GameFeature_Interact           ← hier      │
+│  Game Features      GameFeature_Interact           ← here      │
 ├────────────────────────────────────────────────────────────────┤
 │  Equipment Plugins  Humanoids · Helicopters · …                │
 ├────────────────────────────────────────────────────────────────┤
@@ -45,7 +45,7 @@ Stellt ein kollisionsbasiertes Interaktionssystem bereit: Akteure können Intera
 
 ---
 
-## Verzeichnisstruktur
+## Directory Structure
 
 ```
 GameFeature_Interact/
@@ -69,10 +69,10 @@ GameFeature_Interact/
     │   │   └── GameFeature_InteractRuntimeModule.h
     │   └── Private/
     │       ├── Components/
-    │       │   ├── InteractCollisionComponent.cpp         — Konstruktor, BeginPlay, Lifecycle, Limit
-    │       │   ├── InteractCollisionComponent_Setup.cpp   — Asset-Loading, Box-Erstellung, ShapeUpdated
-    │       │   ├── InteractCollisionComponent_Interact.cpp — Overlap-Events, Sense, Controller-Registrierung
-    │       │   └── InteractCollisionComponent_Widget.cpp  — Widget anzeigen/entfernen
+    │       │   ├── InteractCollisionComponent.cpp          — Constructor, BeginPlay, lifecycle, limit
+    │       │   ├── InteractCollisionComponent_Setup.cpp    — Asset loading, box creation, ShapeUpdated
+    │       │   ├── InteractCollisionComponent_Interact.cpp — Overlap events, sense, controller registration
+    │       │   └── InteractCollisionComponent_Widget.cpp   — Show/remove widget
     │       ├── Widgets/
     │       │   └── InteractUserWidgetBase.cpp
     │       ├── Logging/
@@ -92,82 +92,82 @@ GameFeature_Interact/
 
 ---
 
-## Kernklassen
+## Core Classes
 
 ### `UInteractCollisionComponent`
 
-**Vererbung:**
+**Inheritance:**
 ```
 UActorComponent
-  └─ UCombinedBundleActorComponent   — Asset-Loading-Framework, GameFeatureName-Tracking
-       └─ UPawnDrivingActorComponent_Base  — PawnOwner / PawnController, Possession-Events
+  └─ UCombinedBundleActorComponent   — Asset loading framework, GameFeatureName tracking
+       └─ UPawnDrivingActorComponent_Base  — PawnOwner / PawnController, possession events
             └─ UInteractCollisionComponent
                  implements IInteractControlInterface   — Interact() / StopInteracting()
                  implements IShapeUpdatedInterface      — ShapeUpdated()
 ```
 
-**Initialisierungswerte (Konstruktor):**
+**Constructor Defaults:**
 
-| Eigenschaft | Wert | Bedeutung |
-|-------------|------|-----------|
-| `GameFeatureName` | `"Interact"` | Verknüpft Asset-Loading mit dieser Feature |
-| `bComponentHasComponentAssetToLoad` | `true` | Lädt eigene Komponenten-Assets (nicht Actor-Level) |
-| `bHasLimit` | `false` | Kein Limit by default |
-| `Limit` | `1` | Standardwert falls Limit aktiviert wird |
-| `PrimaryComponentTick.bCanEverTick` | `true` | Tick aktiv (Editor-only für Debug-Zeichnung) |
+| Property | Value | Purpose |
+|----------|-------|---------|
+| `GameFeatureName` | `"Interact"` | Links asset loading to this feature |
+| `bComponentHasComponentAssetToLoad` | `true` | Loads component-level assets (not actor-level) |
+| `bHasLimit` | `false` | No limit by default |
+| `Limit` | `1` | Default value if a limit is activated |
+| `PrimaryComponentTick.bCanEverTick` | `true` | Tick enabled (Editor-only for debug drawing) |
 
-**Transiente Laufzeit-Properties:**
+**Transient Runtime Properties:**
 
-| Property | Typ | Bedeutung |
-|----------|-----|-----------|
-| `InteractableComponents` | `TArray<UBoxComponent*>` | Erzeugte Kollisionsboxen |
-| `InteractWidgetInstance` | `UUserWidget*` | Aktuell angezeigte UI-Instanz |
-| `InteractUIImage` | `TSoftObjectPtr<UTexture2D>` | Interaktions-Icon |
-| `WidgetTemplate` | `TSoftClassPtr<UUserWidget>` | Geladene Widget-Klasse |
-| `InteractableActors` | `TArray<AActor*>` | Alle aktuell überlappenden Akteure |
-| `CurrentInteractingActor` | `AActor*` | Zuletzt interagierender Aktor |
-| `bHasLimit` | `bool` | Ob ein Interaktionslimit gilt |
-| `Limit` | `int32` | Verbleibende Interaktionen |
-| `TurnedCollisionOnElement` | `TArray<bool>` | 90°-Rotation je Kollisionsbox |
+| Property | Type | Purpose |
+|----------|------|---------|
+| `InteractableComponents` | `TArray<UBoxComponent*>` | Created collision boxes |
+| `InteractWidgetInstance` | `UUserWidget*` | Currently displayed UI instance |
+| `InteractUIImage` | `TSoftObjectPtr<UTexture2D>` | Interaction icon |
+| `WidgetTemplate` | `TSoftClassPtr<UUserWidget>` | Loaded widget class |
+| `InteractableActors` | `TArray<AActor*>` | All currently overlapping actors |
+| `CurrentInteractingActor` | `AActor*` | Most recently interacting actor |
+| `bHasLimit` | `bool` | Whether an interaction limit applies |
+| `Limit` | `int32` | Remaining interactions |
+| `TurnedCollisionOnElement` | `TArray<bool>` | 90° rotation flag per collision box |
 
 **Editor-only Properties:**
 
-| Property | Standard | Bedeutung |
-|----------|----------|-----------|
-| `bDebugMode` | `true` | Zeichnet grüne Debug-Boxen um alle Kollisionskomponenten (TickComponent) |
-| `bDebugCollisionBoxComponent` | `false` | Macht Box-Komponenten im Spiel sichtbar |
+| Property | Default | Purpose |
+|----------|---------|---------|
+| `bDebugMode` | `true` | Draws green debug boxes around all collision components (TickComponent) |
+| `bDebugCollisionBoxComponent` | `false` | Makes box components visible in-game |
 
 ---
 
 ### `UGameFeature_Interact_Settings`
 
-Globale Konfiguration. Gespeichert in `DefaultGame.ini` (`Config = Game, defaultconfig`).
+Global configuration. Stored in `DefaultGame.ini` (`Config = Game, defaultconfig`).
 
-| Property | EditCondition | Bedeutung |
-|----------|--------------|-----------|
-| `bUseGlobalQueryCollisionDebug` | — | Master-Switch für Kollisions-Debug |
-| `bGlobalQueryCollisionDebug` | `bUseGlobalQueryCollisionDebug` | Aktiviert globales Kollisions-Debug |
-| `DefinedCollisionDebug` | — | Akteur-Klassen mit Debug-Visualisierung (`HideInDetailPanel`) |
-| `bUseGlobalDefaultInteractLimit` | — | Master-Switch für globales Interaktionslimit |
-| `bHasDefaultInteractLimit` | `bUseGlobalDefaultInteractLimit` | Ob das globale Limit aktiv ist |
-| `DefaultInteractLimit` | `bUseGlobalDefaultInteractLimit` | Globaler Limit-Standardwert |
+| Property | EditCondition | Purpose |
+|----------|--------------|---------|
+| `bUseGlobalQueryCollisionDebug` | — | Master switch for collision debug |
+| `bGlobalQueryCollisionDebug` | `bUseGlobalQueryCollisionDebug` | Enables global collision debug |
+| `DefinedCollisionDebug` | — | Actor classes with debug visualization (`HideInDetailPanel`) |
+| `bUseGlobalDefaultInteractLimit` | — | Master switch for global interaction limit |
+| `bHasDefaultInteractLimit` | `bUseGlobalDefaultInteractLimit` | Whether the global limit is active |
+| `DefaultInteractLimit` | `bUseGlobalDefaultInteractLimit` | Global default limit value |
 
 ---
 
 ### `UInteractUserWidgetBase`
 
-Base-Widget-Klasse für die Interaktionsanzeige.
+Base widget class for the interaction display.
 
-**Vererbung:** `UUserWidget` + `IInteractWidgetInterface`
+**Inheritance:** `UUserWidget` + `IInteractWidgetInterface`
 
-| Element | Typ | Binding |
-|---------|-----|---------|
-| `Text` | `UTextBlock*` | `BindWidget` — Interaktionstext |
-| `Image` | `UImage*` | `BindWidget` — Interaktions-Icon |
+| Element | Type | Binding |
+|---------|------|---------|
+| `Text` | `UTextBlock*` | `BindWidget` — interaction label |
+| `Image` | `UImage*` | `BindWidget` — interaction icon |
 
-Implementiert `IInteractWidgetInterface`:
-- `SetImage_Implementation(UTexture2D*)` — setzt das Icon-Bild
-- `SetText_Implementation(const FString&)` — setzt den Beschriftungstext
+Implements `IInteractWidgetInterface`:
+- `SetImage_Implementation(UTexture2D*)` — sets the icon image
+- `SetText_Implementation(const FString&)` — sets the label text
 
 Flags: `DisableNativeTick`, `editinlinenew`, `Blueprintable`
 
@@ -175,37 +175,37 @@ Flags: `DisableNativeTick`, `editinlinenew`, `Blueprintable`
 
 ### `IInteractWidgetInterface`
 
-Schnittstelle zwischen `UInteractCollisionComponent` und dem Widget.
+Interface between `UInteractCollisionComponent` and the widget.
 
-| Methode | Ereignis |
-|---------|---------|
-| `SetImage(UTexture2D*)` | Icon setzen (`BlueprintNativeEvent`) |
-| `SetText(const FString&)` | Text setzen (`BlueprintNativeEvent`) |
-
----
-
-## Asset-Loading-Typen
-
-`SetupLoadedAsset()` unterscheidet drei Primary-Asset-Typen und reagiert entsprechend:
-
-| Asset-Typ | Klasse | Effekt |
-|-----------|--------|--------|
-| `"WidgetDefinition"` | `UWidgetDefinitionDataAsset` | Widget-Klasse → `WidgetTemplate` |
-| `"CollisionBoxConfig"` | `UCollisionBoxConfigDataAsset` | Rotationsflag → `TurnedCollisionOnElement`, danach `BuildInteractableCollisionComponents()` |
-| `"ActorUIImage"` | `UActorUIImageDataAsset` | Textur → `InteractUIImage` |
+| Method | Event |
+|--------|-------|
+| `SetImage(UTexture2D*)` | Set icon (`BlueprintNativeEvent`) |
+| `SetText(const FString&)` | Set text (`BlueprintNativeEvent`) |
 
 ---
 
-## Ablauf
+## Asset Loading Types
 
-### Initialisierung
+`SetupLoadedAsset()` distinguishes three Primary Asset Types and responds accordingly:
+
+| Asset Type | Class | Effect |
+|------------|-------|--------|
+| `"WidgetDefinition"` | `UWidgetDefinitionDataAsset` | Widget class → `WidgetTemplate` |
+| `"CollisionBoxConfig"` | `UCollisionBoxConfigDataAsset` | Rotation flag → `TurnedCollisionOnElement`, then `BuildInteractableCollisionComponents()` |
+| `"ActorUIImage"` | `UActorUIImageDataAsset` | Texture → `InteractUIImage` |
+
+---
+
+## Flow
+
+### Initialization
 
 ```
-[Assets geladen durch UCombinedBundleActorComponent]
-SetupLoadedAsset() — wiederholt aufgerufen, einmal pro Asset:
+[Assets loaded by UCombinedBundleActorComponent]
+SetupLoadedAsset() — called repeatedly, once per asset:
 
   PrimaryAssetType == "WidgetDefinition"
-    → WidgetClass synchron laden
+    → load WidgetClass synchronously
     → WidgetTemplate = TSoftClassPtr(WidgetClass)
 
   PrimaryAssetType == "CollisionBoxConfig"
@@ -223,20 +223,20 @@ SetupLoadedAsset() — wiederholt aufgerufen, einmal pro Asset:
               → InteractableComponents.Add(BoxComponent)
 
   PrimaryAssetType == "ActorUIImage"
-    → Image synchron laden
+    → load image synchronously
     → InteractUIImage = TSoftObjectPtr(Texture)
 ```
 
-### Laufzeit — Overlap-Events
+### Runtime — Overlap Events
 
 ```
 OnBoxComponentBeginOverlap(OtherActor)
   ├─ OtherActor == Owner  →  return
   ├─ InstigatorController == null  →  return
-  ├─ !CheckLimit()  →  return (Limit erreicht)
+  ├─ !CheckLimit()  →  return (limit reached)
   ├─ InstigatorController == FirstPlayerController
   │    └─ ShowWidget()
-  │         ├─ WidgetTemplate.LoadSynchronous() (falls nötig)
+  │         ├─ WidgetTemplate.LoadSynchronous() (if needed)
   │         ├─ CreateWidget → AddToViewport()
   │         ├─ IInteractWidgetInterface::SetImage(InteractUIImage)
   │         └─ IInteractWidgetInterface::SetText("Interact with {OwnerName}")
@@ -256,99 +256,99 @@ OnBoxComponentEndOverlap(OtherActor)
   └─ InteractableActors.Remove(OtherActor)
 ```
 
-### Interact-Input
+### Interact Input
 
 ```
 Interact_Implementation(InstigatorController)
-  ├─ Owner muss IInteractInterface implementieren
+  ├─ Owner must implement IInteractInterface
   └─ IInteractInterface::GetOnInteractWithPawn()
        .Broadcast(InstigatorController->GetPawn(), InstigatorController)
 ```
 
-Das Broadcast-Signal empfangen `ACombinedBundleActor/Pawn/Character` und `CombinedWheeledVehiclePawn` über ihre `FOnInteractWithPawn`-Delegate-Bindung und delegieren an den `InteractManageGameInstanceSubsystem` für Pawn-Swapping.
+`ACombinedBundleActor/Pawn/Character` and `CombinedWheeledVehiclePawn` receive the broadcast via their `FOnInteractWithPawn` delegate binding and delegate to `InteractManageGameInstanceSubsystem` for pawn swapping.
 
 ---
 
-## Interaktionslimit
+## Interaction Limit
 
-`CheckLimit()` gibt `true` zurück wenn:
-- `bHasLimit == false` (kein Limit gesetzt), **oder**
-- `bHasLimit == true` und `Limit > 0`
+`CheckLimit()` returns `true` when:
+- `bHasLimit == false` (no limit set), **or**
+- `bHasLimit == true` and `Limit > 0`
 
-Das globale Standardlimit kann über `UGameFeature_Interact_Settings` gesetzt werden.
-
----
-
-## Lifecycle-Events
-
-| Event | Verhalten |
-|-------|-----------|
-| `BeginPlay` | Prüft `IsGameFeatureIgnored()`, loggt Start |
-| `ProcessPossess` | Entfernt Widget wenn der erste Spieler den Besitzer possessiert |
-| `EndPlay` | Entfernt Widget unabhängig vom Grund |
-| `ShapeUpdated_Implementation` | Aktualisiert `InteractableComponents[0]` mit neuen Mesh-Bounds |
+The global default limit can be configured via `UGameFeature_Interact_Settings`.
 
 ---
 
-## Anforderungen an den besitzenden Aktor
+## Lifecycle Events
 
-| Interface | Slot | Zweck |
-|-----------|------|-------|
-| `ISceneComponentCatchInterface` | `"Mesh"` | Liefert die Mesh-Komponente für Bound-Berechnung der Kollisionsbox |
-| `IInteractInterface` | — | Empfängt `FOnInteractWithPawn`-Broadcasts |
-
-Der Controller des interagierenden Pawns **sollte** `IRegisterComponentInterface` implementieren, damit sich der Component beim Controller an-/abmelden kann.
+| Event | Behavior |
+|-------|----------|
+| `BeginPlay` | Checks `IsGameFeatureIgnored()`, logs start |
+| `ProcessPossess` | Removes the widget when the first player possesses the owner |
+| `EndPlay` | Removes the widget regardless of reason |
+| `ShapeUpdated_Implementation` | Updates `InteractableComponents[0]` with new mesh bounds |
 
 ---
 
-## CoreInformation-Editor-Integration
+## Requirements for the Owning Actor
 
-`GetSettingsVariableSets_Implementation()` liefert drei `FInformationSet`-Gruppen:
+| Interface | Slot | Purpose |
+|-----------|------|---------|
+| `ISceneComponentCatchInterface` | `"Mesh"` | Provides the mesh component for collision box bounds calculation |
+| `IInteractInterface` | — | Receives `FOnInteractWithPawn` broadcasts |
 
-| Gruppe | Inhalt |
-|--------|--------|
-| `"Interact"` | `HasLimit` (bool), `Limit` (int, nur wenn `bHasLimit == true`) |
-| `"Current Interacting Actor"` | Name des `CurrentInteractingActor` oder `"No actor is currently interacting"` |
-| `"Interactable Actors"` | Namen aller Akteure in `InteractableActors` oder `"No actors found"` |
+The controller of the interacting pawn **should** implement `IRegisterComponentInterface` so the component can register and unregister with the controller.
+
+---
+
+## CoreInformation Editor Integration
+
+`GetSettingsVariableSets_Implementation()` provides three `FInformationSet` groups:
+
+| Group | Contents |
+|-------|----------|
+| `"Interact"` | `HasLimit` (bool), `Limit` (int, only when `bHasLimit == true`) |
+| `"Current Interacting Actor"` | Name of `CurrentInteractingActor` or `"No actor is currently interacting"` |
+| `"Interactable Actors"` | Names of all actors in `InteractableActors` or `"No actors found"` |
 
 ---
 
 ## Logging
 
-| Kategorie | Inhalt |
-|-----------|--------|
-| `Log_Interact` | Allgemeiner Lebenszyklus, Overlap-Events, Limit-Prüfung |
-| `Log_Interact_Debug` | Editor-Tick — Sichtbarkeit der Debug-Kollisionsboxen |
-| `Log_Interact_Setup` | Asset-Loading, Box-Erstellung, ShapeUpdated |
-| `Log_Interact_Widget` | Widget erstellen, anzeigen, entfernen |
-| `Log_Interact_Class` | Klassen-spezifische Ereignisse |
+| Category | Contents |
+|----------|----------|
+| `Log_Interact` | General lifecycle, overlap events, limit checks |
+| `Log_Interact_Debug` | Editor tick — debug collision box visibility |
+| `Log_Interact_Setup` | Asset loading, box creation, ShapeUpdated |
+| `Log_Interact_Widget` | Widget creation, display, removal |
+| `Log_Interact_Class` | Class-specific events |
 
-Alle Logs verwenden `UE_LOGFMT` mit den Feldern `Time`, `Line`, `Class`.
+All logs use `UE_LOGFMT` with fields `Time`, `Line`, `Class`.
 
 ---
 
-## Modul-Abhängigkeiten
+## Module Dependencies
 
 ### `GameFeature_InteractRuntime`
 
-| Modul | Sichtbarkeit | Grund |
-|-------|-------------|-------|
-| `Core` | Public | UE-Basistypen |
-| `GameFeature_InteractSetup` | Public | Settings-Klasse im Runtime-Modul nutzbar |
-| `CoreUObject` · `Engine` · `Slate` · `SlateCore` | Private | Standard-UE-Runtime |
-| `UMG` | Private | Widget-System (`UUserWidget`, `AddToViewport`) |
-| `AssetLoader` | Private | Asset-Manager-Integration |
+| Module | Visibility | Reason |
+|--------|------------|--------|
+| `Core` | Public | UE base types |
+| `GameFeature_InteractSetup` | Public | Settings class accessible from the Runtime module |
+| `CoreUObject` · `Engine` · `Slate` · `SlateCore` | Private | Standard UE runtime |
+| `UMG` | Private | Widget system (`UUserWidget`, `AddToViewport`) |
+| `AssetLoader` | Private | Asset Manager integration |
 | `Core_Classes` | Private | `UPawnDrivingActorComponent_Base` |
-| `Elemental_Classes` | Private | Basis-Aktor-/Pawn-Klassen |
-| `Elemental_Data` | Private | Datentypen aus Elemental_Collection |
-| `Elemental_Interfaces` | Private | Alle genutzten Interfaces |
+| `Elemental_Classes` | Private | Base actor/pawn classes |
+| `Elemental_Data` | Private | Data types from Elemental_Collection |
+| `Elemental_Interfaces` | Private | All used interfaces |
 | `Elemental_Logging` | Private | `GlobalLog`, `StructuredLog` |
-| `Elemental_Structure` | Private | Shared Structs (`FInformationSet`) |
-| `Core_Interfaces` | Private | `IRegisterComponentInterface` u. a. |
+| `Elemental_Structure` | Private | Shared structs (`FInformationSet`) |
+| `Core_Interfaces` | Private | `IRegisterComponentInterface` and others |
 
 ### `GameFeature_InteractSetup`
 
-| Modul | Sichtbarkeit | Grund |
-|-------|-------------|-------|
-| `Core` | Public | UE-Basistypen |
-| `CoreUObject` · `Engine` · `Slate` · `SlateCore` | Private | Standard-UE-Runtime |
+| Module | Visibility | Reason |
+|--------|------------|--------|
+| `Core` | Public | UE base types |
+| `CoreUObject` · `Engine` · `Slate` · `SlateCore` | Private | Standard UE runtime |
