@@ -1,0 +1,5 @@
+#include "Logging/Logging_GF_PhysicalAwarenessSense.h"
+
+DEFINE_LOG_CATEGORY(Log_PhysicalSenseComponent);
+DEFINE_LOG_CATEGORY(Log_PhysicalSenseComponent_Setup);
+DEFINE_LOG_CATEGORY(Log_PhysicalSenseComponent_Runtime);
