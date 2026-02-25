@@ -18,12 +18,12 @@
 #include "DataAssets/EngineSoundDataAsset.h"
 #include "DataAssets/FactionInformationDataAsset.h"
 #include "DataAssets/HelicopterSetupDataAsset.h"
-#include "DataAssets/HelipadConfigurationDataAsset.h"
+//#include "DataAssets/HelipadConfigurationDataAsset.h"
 #include "DataAssets/MainMeshRelativeTranslationDataAsset.h"
-#include "DataAssets/MissileConfigurationDataAsset.h"
+//#include "DataAssets/MissileConfigurationDataAsset.h"
 #include "DataAssets/PhysicsBasedHelicopterDefinitionDataAsset.h"
 #include "DataAssets/PreLoadingDataAsset.h"
-#include "DataAssets/ProjectileConfigDataAsset.h"
+//#include "DataAssets/ProjectileConfigDataAsset.h"
 #include "DataAssets/ReplacementActorDataAsset.h"
 #include "DataAssets/SceneComponentCatchConfigDataAsset.h"
 #include "DataAssets/SpawnPointDefinitionDataAsset.h"
@@ -32,12 +32,12 @@
 #include "DataAssets/StaticMeshCollectionSetupDataAsset.h"
 #include "DataAssets/StaticMeshSetupDataAsset.h"
 #include "DataAssets/Texture2DCollectionDataAsset.h"
-#include "DataAssets/TrainingTargetConfigDataAsset.h"
+//#include "DataAssets/TrainingTargetConfigDataAsset.h"
 #include "DataAssets/VehicleLightsSetupDataAsset.h"
 #include "DataAssets/VehiclePhysicsSetupDataAsset.h"
-#include "DataAssets/Weapon_GatlingGunConfigDataAsset.h"
-#include "DataAssets/Weapon_HybridGunConfigDataAsset.h"
-#include "DataAssets/Weapon_MissileLauncherConfigDataAsset.h"
+//#include "DataAssets/Weapon_GatlingGunConfigDataAsset.h"
+//#include "DataAssets/Weapon_HybridGunConfigDataAsset.h"
+//#include "DataAssets/Weapon_MissileLauncherConfigDataAsset.h"
 #include "DataAssets/WidgetComponentSetupDataAsset.h"
 #include "DataAssets/WidgetDefinitionDataAsset.h"
 
@@ -562,145 +562,145 @@ void UPreLoadingAssetEditorUserWidget::NativeSetDetailsViewData()
 		DetailsView->SetObject(PhysicsBasedHelicopterDefinitionDataAsset);
 	}
 #pragma endregion Helicopter Data Assets
-#pragma region Warfare Data Assets
-	else if(PreLoadingDataAsset->IsA(UHelipadConfigurationDataAsset::StaticClass()))
-	{
-		UHelipadConfigurationDataAsset* HelipadConfigurationDataAsset = Cast<UHelipadConfigurationDataAsset>(PreLoadingDataAsset);
-		if(!HelipadConfigurationDataAsset)
-		{
-			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UHelipadConfigurationDataAsset.",
-				("Class", GET_CLASSNAME_WITH_FUNCTION),
-				("Line", GET_LINE_NUMBER),
-				("Time", GET_CURRENT_TIME)
-			);
-			return;
-		}
-		DetailsView->CategoriesToShow.Empty();
-		DetailsView->CategoriesToShow.Add(TEXT("Mesh"));
-		DetailsView->CategoriesToShow.Add(TEXT("Lights"));
-		DetailsView->CategoriesToShow.Add(TEXT("Materials"));
-		DetailsView->CategoriesToShow.Add(TEXT("Decals"));
-		DetailsView->CategoriesToShow.Add(TEXT("Loop"));
-		DetailsView->CategoriesToShow.Add(TEXT("Delay"));
-		DetailsView->CategoriesToShow.Add(TEXT("Emissive Material Parameter"));
-		DetailsView->SetObject(HelipadConfigurationDataAsset);
-	}
-	else if(PreLoadingDataAsset->IsA(UMissileConfigurationDataAsset::StaticClass()))
-	{
-		UMissileConfigurationDataAsset* MissileConfigurationDataAsset = Cast<UMissileConfigurationDataAsset>(PreLoadingDataAsset);
-		if(!MissileConfigurationDataAsset)
-		{
-			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UMissileConfigurationDataAsset.",
-				("Class", GET_CLASSNAME_WITH_FUNCTION),
-				("Line", GET_LINE_NUMBER),
-				("Time", GET_CURRENT_TIME)
-			);
-			return;
-		}
-		DetailsView->CategoriesToShow.Empty();
-		DetailsView->CategoriesToShow.Add(TEXT("Mesh"));
-		DetailsView->CategoriesToShow.Add(TEXT("Relative Location"));
-		DetailsView->CategoriesToShow.Add(TEXT("Collision"));
-		DetailsView->CategoriesToShow.Add(TEXT("Effects"));
-		DetailsView->CategoriesToShow.Add(TEXT("Sound"));
-		DetailsView->CategoriesToShow.Add(TEXT("Guide Target"));
-		DetailsView->CategoriesToShow.Add(TEXT("Missile Setup"));
-		DetailsView->CategoriesToShow.Add(TEXT("Impact Setup"));
-		DetailsView->CategoriesToShow.Add(TEXT("Projectile Movement"));
-		DetailsView->CategoriesToShow.Add(TEXT("Damage"));
-		DetailsView->SetObject(MissileConfigurationDataAsset);
-	}
-	else if(PreLoadingDataAsset->IsA(UProjectileConfigDataAsset::StaticClass()))
-	{
-		UProjectileConfigDataAsset* ProjectileConfigDataAsset = Cast<UProjectileConfigDataAsset>(PreLoadingDataAsset);
-		if(!ProjectileConfigDataAsset)
-		{
-			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UProjectileConfigDataAsset.",
-				("Class", GET_CLASSNAME_WITH_FUNCTION),
-				("Line", GET_LINE_NUMBER),
-				("Time", GET_CURRENT_TIME)
-			);
-			return;
-		}
-		DetailsView->CategoriesToShow.Empty();
-		DetailsView->CategoriesToShow.Add(TEXT("Projectile"));
-		DetailsView->CategoriesToShow.Add(TEXT("Impact"));
-		DetailsView->SetObject(ProjectileConfigDataAsset);
-	}
-	else if(PreLoadingDataAsset->IsA(UTrainingTargetConfigDataAsset::StaticClass()))
-	{
-		UTrainingTargetConfigDataAsset* TrainingTargetConfigDataAsset = Cast<UTrainingTargetConfigDataAsset>(PreLoadingDataAsset);
-		if(!TrainingTargetConfigDataAsset)
-		{
-			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UTrainingTargetConfigDataAsset.",
-				("Class", GET_CLASSNAME_WITH_FUNCTION),
-				("Line", GET_LINE_NUMBER),
-				("Time", GET_CURRENT_TIME)
-			);
-			return;
-		}
-		DetailsView->CategoriesToShow.Empty();
-		DetailsView->CategoriesToShow.Add(TEXT("Target Setup"));
-		DetailsView->SetObject(TrainingTargetConfigDataAsset);
-	}
-	else if(PreLoadingDataAsset->IsA(UWeapon_GatlingGunConfigDataAsset::StaticClass()))
-	{
-		UWeapon_GatlingGunConfigDataAsset* GatlingGunConfigDataAsset = Cast<UWeapon_GatlingGunConfigDataAsset>(PreLoadingDataAsset);
-		if(!GatlingGunConfigDataAsset)
-		{
-			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UWeapon_GatlingGunConfigDataAsset.",
-				("Class", GET_CLASSNAME_WITH_FUNCTION),
-				("Line", GET_LINE_NUMBER),
-				("Time", GET_CURRENT_TIME)
-			);
-			return;
-		}
-		DetailsView->CategoriesToShow.Empty();
-		DetailsView->CategoriesToShow.Add(TEXT("Mesh"));
-		DetailsView->CategoriesToShow.Add(TEXT("Effects"));
-		DetailsView->CategoriesToShow.Add(TEXT("Sound"));
-		DetailsView->CategoriesToShow.Add(TEXT("Projectile"));
-		DetailsView->CategoriesToShow.Add(TEXT("Barrel"));
-		DetailsView->CategoriesToShow.Add(TEXT("Muzzle"));
-		DetailsView->SetObject(GatlingGunConfigDataAsset);
-	}
-	else if(PreLoadingDataAsset->IsA(UWeapon_HybridGunConfigDataAsset::StaticClass()))
-	{
-		UWeapon_HybridGunConfigDataAsset* HybridGunConfigDataAsset = Cast<UWeapon_HybridGunConfigDataAsset>(PreLoadingDataAsset);
-		if(!HybridGunConfigDataAsset)
-		{
-			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UWeapon_HybridGunConfigDataAsset.",
-				("Class", GET_CLASSNAME_WITH_FUNCTION),
-				("Line", GET_LINE_NUMBER),
-				("Time", GET_CURRENT_TIME)
-			);
-			return;
-		}
-		DetailsView->CategoriesToShow.Empty();
-		DetailsView->CategoriesToShow.Add(TEXT("Socket"));
-		DetailsView->CategoriesToShow.Add(TEXT("Covers"));
-		DetailsView->CategoriesToShow.Add(TEXT("Template"));
-		DetailsView->SetObject(HybridGunConfigDataAsset);
-	}
-	else if(PreLoadingDataAsset->IsA(UWeapon_MissileLauncherConfigDataAsset::StaticClass()))
-	{
-		UWeapon_MissileLauncherConfigDataAsset* MissileLauncherConfigDataAsset = Cast<UWeapon_MissileLauncherConfigDataAsset>(PreLoadingDataAsset);
-		if(!MissileLauncherConfigDataAsset)
-		{
-			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UWeapon_MissileLauncherConfigDataAsset.",
-				("Class", GET_CLASSNAME_WITH_FUNCTION),
-				("Line", GET_LINE_NUMBER),
-				("Time", GET_CURRENT_TIME)
-			);
-			return;
-		}
-		DetailsView->CategoriesToShow.Empty();
-		DetailsView->CategoriesToShow.Add(TEXT("Socket"));
-		DetailsView->CategoriesToShow.Add(TEXT("Covers"));
-		DetailsView->CategoriesToShow.Add(TEXT("Template"));
-		DetailsView->SetObject(MissileLauncherConfigDataAsset);
-	}
-#pragma endregion Warfare Data Assets
+//#pragma region Warfare Data Assets
+//	else if(PreLoadingDataAsset->IsA(UHelipadConfigurationDataAsset::StaticClass()))
+//	{
+//		UHelipadConfigurationDataAsset* HelipadConfigurationDataAsset = Cast<UHelipadConfigurationDataAsset>(PreLoadingDataAsset);
+//		if(!HelipadConfigurationDataAsset)
+//		{
+//			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UHelipadConfigurationDataAsset.",
+//				("Class", GET_CLASSNAME_WITH_FUNCTION),
+//				("Line", GET_LINE_NUMBER),
+//				("Time", GET_CURRENT_TIME)
+//			);
+//			return;
+//		}
+//		DetailsView->CategoriesToShow.Empty();
+//		DetailsView->CategoriesToShow.Add(TEXT("Mesh"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Lights"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Materials"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Decals"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Loop"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Delay"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Emissive Material Parameter"));
+//		DetailsView->SetObject(HelipadConfigurationDataAsset);
+//	}
+//	else if(PreLoadingDataAsset->IsA(UMissileConfigurationDataAsset::StaticClass()))
+//	{
+//		UMissileConfigurationDataAsset* MissileConfigurationDataAsset = Cast<UMissileConfigurationDataAsset>(PreLoadingDataAsset);
+//		if(!MissileConfigurationDataAsset)
+//		{
+//			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UMissileConfigurationDataAsset.",
+//				("Class", GET_CLASSNAME_WITH_FUNCTION),
+//				("Line", GET_LINE_NUMBER),
+//				("Time", GET_CURRENT_TIME)
+//			);
+//			return;
+//		}
+//		DetailsView->CategoriesToShow.Empty();
+//		DetailsView->CategoriesToShow.Add(TEXT("Mesh"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Relative Location"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Collision"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Effects"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Sound"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Guide Target"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Missile Setup"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Impact Setup"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Projectile Movement"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Damage"));
+//		DetailsView->SetObject(MissileConfigurationDataAsset);
+//	}
+//	else if(PreLoadingDataAsset->IsA(UProjectileConfigDataAsset::StaticClass()))
+//	{
+//		UProjectileConfigDataAsset* ProjectileConfigDataAsset = Cast<UProjectileConfigDataAsset>(PreLoadingDataAsset);
+//		if(!ProjectileConfigDataAsset)
+//		{
+//			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UProjectileConfigDataAsset.",
+//				("Class", GET_CLASSNAME_WITH_FUNCTION),
+//				("Line", GET_LINE_NUMBER),
+//				("Time", GET_CURRENT_TIME)
+//			);
+//			return;
+//		}
+//		DetailsView->CategoriesToShow.Empty();
+//		DetailsView->CategoriesToShow.Add(TEXT("Projectile"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Impact"));
+//		DetailsView->SetObject(ProjectileConfigDataAsset);
+//	}
+//	else if(PreLoadingDataAsset->IsA(UTrainingTargetConfigDataAsset::StaticClass()))
+//	{
+//		UTrainingTargetConfigDataAsset* TrainingTargetConfigDataAsset = Cast<UTrainingTargetConfigDataAsset>(PreLoadingDataAsset);
+//		if(!TrainingTargetConfigDataAsset)
+//		{
+//			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UTrainingTargetConfigDataAsset.",
+//				("Class", GET_CLASSNAME_WITH_FUNCTION),
+//				("Line", GET_LINE_NUMBER),
+//				("Time", GET_CURRENT_TIME)
+//			);
+//			return;
+//		}
+//		DetailsView->CategoriesToShow.Empty();
+//		DetailsView->CategoriesToShow.Add(TEXT("Target Setup"));
+//		DetailsView->SetObject(TrainingTargetConfigDataAsset);
+//	}
+//	else if(PreLoadingDataAsset->IsA(UWeapon_GatlingGunConfigDataAsset::StaticClass()))
+//	{
+//		UWeapon_GatlingGunConfigDataAsset* GatlingGunConfigDataAsset = Cast<UWeapon_GatlingGunConfigDataAsset>(PreLoadingDataAsset);
+//		if(!GatlingGunConfigDataAsset)
+//		{
+//			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UWeapon_GatlingGunConfigDataAsset.",
+//				("Class", GET_CLASSNAME_WITH_FUNCTION),
+//				("Line", GET_LINE_NUMBER),
+//				("Time", GET_CURRENT_TIME)
+//			);
+//			return;
+//		}
+//		DetailsView->CategoriesToShow.Empty();
+//		DetailsView->CategoriesToShow.Add(TEXT("Mesh"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Effects"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Sound"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Projectile"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Barrel"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Muzzle"));
+//		DetailsView->SetObject(GatlingGunConfigDataAsset);
+//	}
+//	else if(PreLoadingDataAsset->IsA(UWeapon_HybridGunConfigDataAsset::StaticClass()))
+//	{
+//		UWeapon_HybridGunConfigDataAsset* HybridGunConfigDataAsset = Cast<UWeapon_HybridGunConfigDataAsset>(PreLoadingDataAsset);
+//		if(!HybridGunConfigDataAsset)
+//		{
+//			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UWeapon_HybridGunConfigDataAsset.",
+//				("Class", GET_CLASSNAME_WITH_FUNCTION),
+//				("Line", GET_LINE_NUMBER),
+//				("Time", GET_CURRENT_TIME)
+//			);
+//			return;
+//		}
+//		DetailsView->CategoriesToShow.Empty();
+//		DetailsView->CategoriesToShow.Add(TEXT("Socket"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Covers"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Template"));
+//		DetailsView->SetObject(HybridGunConfigDataAsset);
+//	}
+//	else if(PreLoadingDataAsset->IsA(UWeapon_MissileLauncherConfigDataAsset::StaticClass()))
+//	{
+//		UWeapon_MissileLauncherConfigDataAsset* MissileLauncherConfigDataAsset = Cast<UWeapon_MissileLauncherConfigDataAsset>(PreLoadingDataAsset);
+//		if(!MissileLauncherConfigDataAsset)
+//		{
+//			UE_LOGFMT(Log_PreLoadingAssetEditor, Warning, "{Time}: {Line} {Class}: Failed to cast PreLoadingDataAsset to UWeapon_MissileLauncherConfigDataAsset.",
+//				("Class", GET_CLASSNAME_WITH_FUNCTION),
+//				("Line", GET_LINE_NUMBER),
+//				("Time", GET_CURRENT_TIME)
+//			);
+//			return;
+//		}
+//		DetailsView->CategoriesToShow.Empty();
+//		DetailsView->CategoriesToShow.Add(TEXT("Socket"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Covers"));
+//		DetailsView->CategoriesToShow.Add(TEXT("Template"));
+//		DetailsView->SetObject(MissileLauncherConfigDataAsset);
+//	}
+//#pragma endregion Warfare Data Assets
 	// If the PreLoadingDataAsset is not one of the specific types, set it directly
 	else
 	{
