@@ -41,14 +41,6 @@
 		{
 			"Name": "Core_Collection",
 			"Enabled": true
-		},
-		{
-			"Name": "Warfare_Assets",
-			"Enabled": true
-		},
-		{
-			"Name": "Vehicles_Test_Assets",
-			"Enabled": true
 		}
 	],
 	"Sealed": false
