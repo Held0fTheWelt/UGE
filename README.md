@@ -9,9 +9,13 @@ The project is structured in dependency layers. Lower layers have no knowledge o
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  Game Features          GameFeature_HumanoidMovement    │
-│                         GameFeature_Interact            │
-│                         GameFeature_PhysicalAwareness   │
+│  Game Features  AccoladeSystem · AnimationSystem ·      │
+│                 CosmeticsSystem · EquipmentSystem ·     │
+│                 ExperienceSystem · HeroSystem ·         │
+│                 HumanoidMovement · Interact ·           │
+│                 InteractionSystem · InventorySystem ·   │
+│                 PawnExtension · PhysicalAwareness ·     │
+│                 Tournament                              │
 ├─────────────────────────────────────────────────────────┤
 │  Equipment Plugins      Humanoids · Helicopters ·       │
 │                         Vehicles · Ships · Aircrafts    │
@@ -179,10 +183,140 @@ Depends on `AssetLoader`, `Elemental_Collection`, `Core_Collection`, `LoggingMac
 
 Located in `Plugins/GameFeatures/`. Loaded explicitly after project startup (`ExplicitlyLoaded: true`).
 
+#### GameFeature_AccoladeSystem
+Kill/streak/assist feedback system. Processes elimination and damage messages and displays data-driven accolade toasts in the HUD.
+
+**Message processors** (placed as components on GameState):
+
+| Class | Purpose |
+|-------|---------|
+| `UAssistProcessor` | Tracks damage per attacker; broadcasts `Assist.Message` to all non-killers when a target dies |
+| `UElimChainProcessor` | **Abstract** — tracks rapid kill chains (time window: `ChainTimeLimit`, default 4.5 s); subclass in Blueprint and populate `ElimChainTags` |
+| `UElimStreakProcessor` | **Abstract** — tracks kill streaks without own death; subclass in Blueprint and populate `ElimStreakTags` |
+
+**Widget:** `UAccoladeHostWidget` (`UCommonUserWidget`) — listens for `Accolade.Message`, async-loads icon/sound from DataRegistry, calls BP events `CreateAccoladeWidget` / `DestroyAccoladeWidget`. `LocationName` tag controls which accolades are displayed per HUD instance.
+
+**Data:** `FAccoladeDefinitionRow` (DataTable row: display name, sound, icon, duration, `LocationTag`, suppression rules) · `UAccoladeDefinition` (standalone DataAsset variant).
+
+**Messages:**
+
+| Tag | Direction | Struct |
+|-----|-----------|--------|
+| `WarCollection.Elimination.Message` | Incoming | `FVerbMessage` |
+| `Core.Damage.Message` | Incoming | `FVerbMessage` |
+| `Assist.Message` | Outgoing | `FVerbMessage` |
+| `Accolade.Message` | Outgoing | `FNotificationMessage` |
+
+Dependencies: `Elemental_MessageSystem`, `CommonUI`, `DataRegistry`, `AsyncMixin`.
+
+---
+
+#### GameFeature_AnimationSystem
+Animation base system. Provides `UFeaturedAnimInstance` — a `UAnimInstance` subclass that automatically binds to the owning pawn's `UAbilitySystemComponent`, maps gameplay tags to AnimBP properties via `FGameplayTagBlueprintPropertyMap`, and computes ground distance each frame via `ICharacterGroundInfoProviderInterface`.
+
+**Blueprint API:**
+
+| Method | Purpose |
+|--------|---------|
+| `InitializeWithAbilitySystem(ASC)` | Binds the TagPropertyMap to the ASC |
+| `HasGameplayTag(Tag)` | Returns true if the tag is present on the ASC |
+| `IsAbilityActive(Tag)` | Checks whether the ability tag is in the owned tags |
+| `GetAttributeValue(Tag)` | Returns an attribute value |
+
+**Usage:** derive the AnimBP from `UFeaturedAnimInstance`; populate `GameplayTagPropertyMap` in Class Defaults to bind tags to float/bool/enum properties — no C++ required for new bindings.
+
+**Placement:** set the AnimBP class on the Pawn to a `UFeaturedAnimInstance` subclass; implement `ICharacterGroundInfoProviderInterface` on a pawn component or the owner to supply `GroundDistance`.
+
+Dependencies: `AnimationCore`, `GameplayAbilities`, `GameplayTags`, `Elemental_Interfaces`.
+
+---
+
+#### GameFeature_CosmeticsSystem
+Cosmetics system for modularly swappable character parts (head, body, equipment pieces). The controller determines which parts are desired; the pawn spawns and manages the actual actor instances with replication.
+
+**Components:**
+
+| Class | Purpose |
+|-------|---------|
+| `UControllerComponent_CharacterParts` | `UControllerComponent` — holds the list of desired `FCharacterPart` entries for the possessed pawn |
+| `UPawnComponent_CharacterParts` | `UActorComponent` — spawns/despawns cosmetic actors; replicates active part list via `FFastArraySerializer`; exposes `FSpawnedCharacterPartsChanged` delegate |
+
+**Types:** `FCharacterPart` (actor class + optional socket) · `FCharacterPartHandle` (opaque handle) · `ECharacterCustomizationCollisionMode` (NoCollision / UseProfileFromPart).
+
+**Animation support:** `FCosmeticAnimLayerSelectionSet` and `FCosmeticAnimBodyStyleSelectionSet` — tag-driven selection of anim layers and AnimBP types per body style.
+
+**Placement:** `UControllerComponent_CharacterParts` on PlayerController · `UPawnComponent_CharacterParts` on Pawn.
+
+Dependencies: `Engine`, `ModularGameplay`, `GameplayTags`, `Elemental_Interfaces`, `NetCore`.
+
+---
+
+#### GameFeature_EquipmentSystem
+Equipment system. Manages equipped items on pawns (weapons, gadgets, etc.): spawns actors, grants GAS ability sets, and replicates state. `UQuickBarComponent` provides the controller with a slot-based selection interface.
+
+**Core classes:**
+
+| Class | Purpose |
+|-------|---------|
+| `UEquipmentDefinition` | **Abstract** `UObject` — defines equipment: `AbilitySetsToGrant`, `ActorsToSpawn` |
+| `UEquipmentInstance` | `UObject` — replicated runtime instance; BP events `OnEquipped` / `OnUnequipped` |
+| `UEquipmentManagerComponent` | `UPawnComponent` — manages equipment list with replication; equip/unequip + ability grant/revoke |
+| `UQuickBarComponent` | `UControllerComponent` — slot-based quick bar; replicates active index |
+| `UGameplayAbility_FromEquipment` | Base ability class for abilities granted by equipment; provides access to `UEquipmentInstance` and `UInventoryItemInstance` |
+
+**Placement:** `UEquipmentManagerComponent` on Pawn · `UQuickBarComponent` on PlayerController · `UEquipmentDefinition` subclass DataAsset per equipment type.
+
+**Messages:**
+
+| Tag | Direction | Struct |
+|-----|-----------|--------|
+| `QuickBar.Message.SlotsChanged` | Outgoing | `FQuickBarSlotsChangedMessage` |
+| `QuickBar.Message.ActiveIndexChanged` | Outgoing | `FQuickBarActiveIndexChangedMessage` |
+
+Dependencies: `GameplayAbilities`, `Elemental_Interfaces`, `Elemental_MessageSystem`, `IrisCore`, `Niagara`.
+
+---
+
+#### GameFeature_ExperienceSystem
+Experience loading system. Loads and activates a `UExperienceDefinition` at runtime: registers GameFeature plugins, activates ability sets, and configures the game session.
+
+**Classes:**
+
+| Class | Purpose |
+|-------|---------|
+| `UExperienceManagerComponent` | `UGameStateComponent` — orchestrates the experience loading state machine (`EExperienceLoadState`); activates/deactivates GameFeature plugins and ability sets; broadcasts `OnExperienceLoaded` |
+| `UAsyncAction_ExperienceReady` | `UBlueprintAsyncActionBase` — BP node `WaitForExperienceReady`; fires `OnReady` once fully loaded (also fires retroactively if already loaded) |
+
+**Placement:** `UExperienceManagerComponent` on GameState · `UExperienceDefinition` DataAsset configured via GameMode or Level Blueprint.
+
+Dependencies: `GameFeatures`, `GameplayTags`, `CommonLoadingScreen`, `Elemental_Interfaces`, `CommonUser`, `Core_Data`.
+
+---
+
+#### GameFeature_HeroSystem
+Pawn input and camera coordinator for player-controlled characters. `UHeroComponent` hooks into the `IGameFrameworkInitStateInterface` protocol and handles two responsibilities: forwarding input tag events to the ASC and managing ability-driven camera mode overrides.
+
+**InitState transitions** (depends on `UPawnExtensionComponent`):
+
+| Transition | Action |
+|------------|--------|
+| `DataAvailable → DataInitialized` | Calls `IPawnExtensionComponentInterface::Execute_InitializeAbilitySystem()`; broadcasts `NAME_BindInputsNow` extension event to Pawn and PlayerController |
+| `DataInitialized → GameplayReady` | Pawn is fully ready for gameplay |
+
+**Key methods:** `SetAbilityCameraMode()` / `ClearAbilityCameraMode()` — override active camera mode from within an ability · `Input_AbilityInputTagPressed/Released()` — forwards events to `IAbilitySystemInputInterface` on the ASC owner.
+
+**Placement:** `UHeroComponent` on Pawn (requires `UPawnExtensionComponent` and an ASC on PlayerState).
+
+Dependencies: `ModularGameplay`, `GameplayAbilities`, `GameplayTags`, `Elemental_Interfaces`, `Elemental_Common`.
+
+---
+
 #### GameFeature_HumanoidMovement
 Adds humanoid movement mechanics (walking, running, jumping animations and input binding) to `AHumanoidCharacter` via the modular Game Feature action system.
 Module: `GameFeature_HumanoidMovementRuntime` (Runtime, Default).
 State: **Active by default** (`BuiltInInitialFeatureState: Active`).
+
+---
 
 #### GameFeature_Interact
 Proximity-based interaction system. Adds collision-driven interaction zones, UI feedback, and pawn-swapping support to any actor.
@@ -219,6 +353,89 @@ Modules:
 
 **Logging categories:** `Log_Interact`, `Log_Interact_Debug`, `Log_Interact_Setup`, `Log_Interact_Widget`, `Log_Interact_Class`
 
+---
+
+#### GameFeature_InteractionSystem
+GAS-based interaction system. Detects `IInteractableTarget` objects near the player via ability tasks (line trace or overlap), dynamically grants interaction abilities, and communicates progress via the `GameplayMessageSubsystem`.
+
+**Classes:**
+
+| Class | Purpose |
+|-------|---------|
+| `UGameplayAbility_Interact` | **Abstract** `UGameplayAbility` — base for interaction abilities; holds `CurrentOptions` (`TArray<FInteractionOption>`); calls `TriggerInteraction()`; subclass in Blueprint |
+| `UAbilityTask_GrantNearbyInteraction` | Grants interaction abilities to nearby `IInteractableTarget` objects (overlap-based); cleaned up when task ends |
+| `UAbilityTask_WaitForInteractableTargets_SingleLineTrace` | Monitors interactable targets via single line trace (configurable channel, length, interval) |
+| `UInteractionStatics` | `UBlueprintFunctionLibrary` — `GetInteractableTargetsFromActor()`, `AppendInteractableTargetsFromHitResult()` |
+
+**Placement:** Blueprint subclass of `UGameplayAbility_Interact` as a startup ability on the Pawn's ASC · `IInteractableTarget` implemented on interactable world actors.
+
+**Messages:**
+
+| Tag | Direction | Struct |
+|-----|-----------|--------|
+| `Interaction.Duration.Message` | Outgoing | `FInteractionDurationMessage` (progress 0..1 + target) |
+
+Dependencies: `GameplayAbilities`, `GameplayTasks`, `Core_Interfaces`, `Core_Interact`, `Elemental_Interfaces`, `UMG`.
+
+---
+
+#### GameFeature_InventorySystem
+Inventory system. Manages item instances on pawns with replication, supports fragment-based item extensions (equippable, stats, icons), and provides a world pickup component integrated with the interaction system.
+
+**Core classes:**
+
+| Class | Purpose |
+|-------|---------|
+| `UInventoryItemDefinition` | **Abstract** `UObject` — defines an item type via a `Fragments` array |
+| `UInventoryItemInstance` | `UObject` — replicated runtime instance; holds a `StatTagStack` map |
+| `UInventoryManagerComponent` | `UPawnComponent` — manages item list with `FFastArraySerializer` replication |
+| `UWorldPickupComponent` | `UCombinedBundleActorComponent` + `IInteractableTarget` — on pickup calls `UInventoryManagerComponent::AddItemDefinitionTyped()` on the instigator |
+| `UInventorySubsystem` | `UWorldSubsystem` — tag-based inventory lookup by actor |
+| `UInventoryFunctionLibrary` | `UBlueprintFunctionLibrary` — `FindFragmentByClass()`, fragment data access |
+
+**Fragments:**
+
+| Class | Purpose |
+|-------|---------|
+| `UInventoryFragment_EquippableItem` | Links item to the EquipmentSystem via slot tag + `UEquipmentDefinition` |
+| `UInventoryFragment_SetStats` | Initial stat values (tag → int32 map) |
+| `UInventoryFragment_PickupIcon` | Pickup texture for world display |
+| `UInventoryFragment_QuickBarIcon` | QuickBar slot icon texture |
+
+**Placement:** `UInventoryManagerComponent` on Pawn · `UWorldPickupComponent` on world actors · `UInventoryItemDefinition` subclass DataAssets with fragment configuration.
+
+**Messages:**
+
+| Tag | Direction | Struct |
+|-----|-----------|--------|
+| `InventoryMessageStackChanged` | Outgoing | `FInventoryChangeMessage` |
+
+Dependencies: `Core_Interfaces`, `Core_Interact`, `Elemental_Interfaces`, `Elemental_Player`, `GameplayAbilities`, `GameplayMessageRuntime`, `NetCore`.
+
+---
+
+#### GameFeature_PawnExtension
+Pawn initialization coordinator. Ensures all pawn subsystems (AbilitySystemComponent, input, PawnData) are initialized in the correct order — including async loading and late-joining scenarios. Implements the `IGameFrameworkInitStateInterface` protocol.
+
+**`UPawnExtensionComponent`** (`UPawnComponent` + `IGameFrameworkInitStateInterface` + `IPawnExtensionComponentInterface`): central coordinator for pawn initialization; manages `PawnData`, binds the ASC, processes input configuration; exposes `OnAbilitySystemInitialized` / `OnAbilitySystemUninitialized` delegates.
+
+**InitState protocol** (four ordered states from `GameplayTags_Core`):
+
+| Tag | Meaning |
+|-----|---------|
+| `InitState.Spawned` | Actor spawned, basic setup complete |
+| `InitState.DataAvailable` | PawnData and dependencies present |
+| `InitState.DataInitialized` | ASC and all systems initialized |
+| `InitState.GameplayReady` | Pawn fully ready for gameplay |
+
+Other components (input, ability grants, cosmetics) listen for these states and initialize only once their prerequisites are met.
+
+**Placement:** `UPawnExtensionComponent` on Pawn (must be early in the component stack).
+
+Dependencies: `ModularGameplay`, `GameplayAbilities`, `GameplayTags`, `Core_Structure`, `Elemental_Classes`, `Elemental_Interfaces`, `Elemental_Structure`.
+
+---
+
 #### GameFeature_PhysicalAwareness
 Collision-driven touch-sense system. Lets any pawn detect, track, and query physically overlapping actors.
 Module: `GameFeature_PhysicalAwarenessRuntime` (Runtime, Default).
@@ -240,6 +457,18 @@ State: **Active by default** (`BuiltInInitialFeatureState: Active`).
 | `bCanTouchActors` | Whether touch interactions are permitted |
 
 **Logging categories:** `Log_PhysicalSenseComponent`, `Log_PhysicalSenseComponent_Setup`, `Log_PhysicalSenseComponent_Runtime`
+
+---
+
+#### GameFeature_Tournament
+Tournament system. Currently implemented as a module stub — contains no gameplay classes yet. Intended for tournament management logic (brackets, rounds, score tracking).
+
+**Planned responsibilities:**
+- Tournament bracket management (single/double elimination, round robin)
+- Round and match state tracking
+- Score and ranking persistence
+
+Status: **Pending implementation.**
 
 ---
 
@@ -299,9 +528,19 @@ Additional plugin search paths: `AssetPlugins`, `CorePlugins`, `EditorPlugins`, 
 ### Game Feature Branches
 | Branch | Feature |
 |--------|---------|
+| `feature-GF-AccoladeSystem` | GameFeature_AccoladeSystem |
+| `feature-GF-AnimationSystem` | GameFeature_AnimationSystem |
+| `feature-GF-CosmeticsSystem` | GameFeature_CosmeticsSystem |
+| `feature-GF-EquipmentSystem` | GameFeature_EquipmentSystem |
+| `feature-GF-ExperienceSystem` | GameFeature_ExperienceSystem |
+| `feature-GF-HeroSystem` | GameFeature_HeroSystem |
 | `feature-GF-humanoid-movement` | GameFeature_HumanoidMovement |
 | `feature-GF-interact` | GameFeature_Interact |
+| `feature-GF-InteractionSystem` | GameFeature_InteractionSystem |
+| `feature-GF-InventorySystem` | GameFeature_InventorySystem |
+| `feature-GF-PawnExtension` | GameFeature_PawnExtension |
 | `feature-GF-physical-awareness` | GameFeature_PhysicalAwareness |
+| `feature-GF-Tournament` | GameFeature_Tournament |
 
 ### Editor Branches
 | Branch | Purpose |
