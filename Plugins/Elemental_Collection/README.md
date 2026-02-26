@@ -4,6 +4,16 @@ Core implementation plugin for the UGE project. Provides the foundational game f
 
 ---
 
+## Quick Start
+
+For framework assembly in the UE Editor:
+→ **`Docs/References/Ref_LyraFramework_UEAssembly.md`**
+
+Short version: GameInstance = `UGameInstance_Core`, WorldSettings = `ACoreWorldSettings`,
+set `DefaultGameplayExperience` DataAsset, add `UExperienceManagerComponent` to GameState.
+
+---
+
 ## Module Overview
 
 | Module | Type | Purpose |
