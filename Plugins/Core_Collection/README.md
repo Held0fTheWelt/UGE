@@ -4,6 +4,16 @@ A comprehensive game framework plugin providing the full gameplay stack for the 
 
 ---
 
+## Quick Start
+
+For framework assembly in the UE Editor:
+→ **`Docs/References/Ref_LyraFramework_UEAssembly.md`**
+
+Short version: `Project Settings → AssetManager = UAssetManager_Core`, `GameMode = AGameMode_Core`,
+set `WorldSettings.DefaultGameplayExperience` DataAsset, configure `UCoreSettingsLocal/Shared`.
+
+---
+
 ## Module Overview
 
 ```
