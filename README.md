@@ -3,6 +3,11 @@
 Unreal Engine **5.6** — Modular, plugin-based game framework built on Lyra foundations.
 Provides a reusable equipment system for humanoids, helicopters, vehicles, ships, and aircraft with a unified controller, physics-driven flight, GAS integration, and data-driven configuration.
 
+# Content Examples:
+Content examples reside inside its own Project, without any codebase at all.
+This gives me the freedom to work on the code without relying on specialized assets.
+Github Repository: https://github.com/Held0fTheWelt/UGE_ContentExamples
+
 # Architecture Overview
 
 The project is structured in dependency layers. Lower layers have no knowledge of higher ones.
@@ -11,11 +16,11 @@ The project is structured in dependency layers. Lower layers have no knowledge o
 ┌─────────────────────────────────────────────────────────┐
 │  Game Features  AccoladeSystem · AnimationSystem ·      │
 │                 CosmeticsSystem · EquipmentSystem ·     │
-│                 ExperienceSystem · HeroSystem ·         │
-│                 HumanoidMovement · Interact ·           │
-│                 InteractionSystem · InventorySystem ·   │
-│                 PawnExtension · PhysicalAwareness ·     │
-│                 Tournament                              │
+│                 ExperienceSystem · FeedbackSystem ·     │
+│                 HeroSystem · HumanoidMovement ·         │
+│                 Interact · InteractionSystem ·          │
+│                 InventorySystem · PawnExtension ·       │
+│                 PhysicalAwareness · Tournament          │
 ├─────────────────────────────────────────────────────────┤
 │  Equipment Plugins      Humanoids · Helicopters ·       │
 │                         Vehicles · Ships · Aircrafts    │
@@ -293,6 +298,33 @@ Dependencies: `GameFeatures`, `GameplayTags`, `CommonLoadingScreen`, `Elemental_
 
 ---
 
+#### GameFeature_FeedbackSystem
+Feedback system. Provides two independent sub-systems: **Context Effects** (tag-driven, surface-aware VFX and audio triggered from animation notify states) and **Number Pops** (floating damage/healing numbers displayed via a controller component).
+
+**Context Effects classes:**
+
+| Class | Purpose |
+|-------|---------|
+| `IContextEffectsInterface` | Blueprintable interface — `AnimMotionEffect()` call from AnimNotify states |
+| `UContextEffectComponent` | `UActorComponent`, implements `IContextEffectsInterface` — resolves physical surface to a context tag, queries libraries, spawns matching sounds and Niagara systems via `UContextEffectsSubsystem` |
+| `UContextEffectsLibrary` | `UObject` DataAsset — `FContextEffects` entries (`EffectTag` + `Context` tags → soft refs to `USoundBase` / `UNiagaraSystem`); async-loads on demand; `ExactMatch` / `BestMatch` resolution |
+| `UContextEffectsSubsystem` | `UWorldSubsystem` — per-actor library registry; `SpawnContextEffects()`, `GetContextFromSurfaceType()`, `LoadAndAddContextEffectsLibraries()` |
+| `UContextEffectsSettings` | `UDeveloperSettings` — `SurfaceTypeToContextMap` (`EPhysicalSurface → FGameplayTag`) |
+
+**Number Pop classes:**
+
+| Class | Purpose |
+|-------|---------|
+| `UNumberPopComponent` | **Abstract** `UControllerComponent` — `AddNumberPop(FNumberPopRequest)`; subclass in Blueprint to implement the actual display |
+| `FNumberPopRequest` | Struct — `WorldLocation`, `SourceTags`, `TargetTags`, `NumberToDisplay`, `bIsCriticalDamage` |
+| `UDamagePopStyle` | `UDataAsset` — style per damage type: `DisplayText`, `MatchPattern` (`FGameplayTagQuery`), `Color`, `CriticalColor`, `TextMesh` |
+
+**Placement:** `UContextEffectComponent` on Pawn · Blueprint subclass of `UNumberPopComponent` on PlayerController · `UContextEffectsLibrary` and `UDamagePopStyle` DataAssets · `UContextEffectsSettings` in Project Settings.
+
+Dependencies: `ModularGameplay`, `GameplayTags`, `Niagara`, `AudioMixer`, `PhysicsCore`, `DeveloperSettings`, `Elemental_Interfaces`.
+
+---
+
 #### GameFeature_HeroSystem
 Pawn input and camera coordinator for player-controlled characters. `UHeroComponent` hooks into the `IGameFrameworkInitStateInterface` protocol and handles two responsibilities: forwarding input tag events to the ASC and managing ability-driven camera mode overrides.
 
@@ -533,6 +565,7 @@ Additional plugin search paths: `AssetPlugins`, `CorePlugins`, `EditorPlugins`, 
 | `feature-GF-CosmeticsSystem` | GameFeature_CosmeticsSystem |
 | `feature-GF-EquipmentSystem` | GameFeature_EquipmentSystem |
 | `feature-GF-ExperienceSystem` | GameFeature_ExperienceSystem |
+| `feature-GF-FeedbackSystem` | GameFeature_FeedbackSystem |
 | `feature-GF-HeroSystem` | GameFeature_HeroSystem |
 | `feature-GF-humanoid-movement` | GameFeature_HumanoidMovement |
 | `feature-GF-interact` | GameFeature_Interact |
