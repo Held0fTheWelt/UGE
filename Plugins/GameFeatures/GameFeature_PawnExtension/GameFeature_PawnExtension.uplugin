@@ -23,7 +23,7 @@
 		}
 	],
 	"ExplicitlyLoaded": true,
-	"BuiltInInitialFeatureState": "Active",
+	"BuiltInInitialFeatureState": "Installed",
 	"Sealed": false,
 	"Plugins": [
 		{
@@ -36,6 +36,10 @@
 		},
 		{
 			"Name": "Elemental_Collection",
+			"Enabled": true
+		},
+		{
+			"Name": "Core_Collection",
 			"Enabled": true
 		}
 	]

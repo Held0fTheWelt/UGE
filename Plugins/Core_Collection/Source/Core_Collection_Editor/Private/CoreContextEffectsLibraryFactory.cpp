@@ -1,8 +1,9 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
-// Adapted for WarCollection
+// Adapted for UGE
 
 #include "CoreContextEffectsLibraryFactory.h"
 #include "UObject/SavePackage.h"
+#include "UObject/UObjectGlobals.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(CoreContextEffectsLibraryFactory)
 
@@ -13,8 +14,8 @@ UCoreContextEffectsLibraryFactory::UCoreContextEffectsLibraryFactory(const FObje
 {
 	bCreateNew = true;
 	bEditAfterNew = true;
-	// Load at runtime so we don't require GameFeature_FeedbackSystemRuntime to be present
-	SupportedClass = LoadObject<UClass>(nullptr, TEXT("/Script/GameFeature_FeedbackSystemRuntime.ContextEffectsLibrary"));
+	// Optional GameFeature class; use only when the module is already loaded.
+	SupportedClass = FindObject<UClass>(nullptr, TEXT("/Script/GameFeature_FeedbackSystemRuntime.ContextEffectsLibrary"));
 }
 
 FText UCoreContextEffectsLibraryFactory::GetDisplayName() const

@@ -23,7 +23,7 @@
 	],
 	"EnabledByDefault": true,
 	"ExplicitlyLoaded": true,
-	"BuiltInInitialFeatureState": "Active",
+	"BuiltInInitialFeatureState": "Installed",
 	"Plugins": [
 		{
 			"Name": "Elemental_Collection",
