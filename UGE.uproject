@@ -17,6 +17,78 @@
 			"TargetAllowList": [
 				"Editor"
 			]
+		},
+		{
+			"Name": "AudioModulation",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
+			"Enabled": true
+		},
+		{
+			"Name": "GameFeatures",
+			"Enabled": true
+		},
+		{
+			"Name": "Metasound",
+			"Enabled": true
+		},
+		{
+			"Name": "ModularGameplay",
+			"Enabled": true
+		},
+		{
+			"Name": "Niagara",
+			"Enabled": true
+		},
+		{
+			"Name": "HumanoidsContent",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraAudioAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraCharacterAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraExampleContent",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraMapAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraMaterialAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraSharedVisualAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraSystemAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraUIAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraVfxAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "LyraWeaponAssets",
+			"Enabled": true
+		},
+		{
+			"Name": "VehiclesContent",
+			"Enabled": true
 		}
 	],
 	"AdditionalPluginDirectories": [
@@ -24,7 +96,8 @@
 		"CorePlugins",
 		"EditorPlugins",
 		"WidgetPlugins",
-		"SamplePlugins"
+		"SamplePlugins",
+		"../UGE_ContentExamples/AssetPlugins"
 	],
 	"TargetPlatforms": [
 		"Windows"
