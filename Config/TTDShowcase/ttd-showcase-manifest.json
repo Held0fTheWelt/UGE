@@ -1,0 +1,356 @@
+{
+    "schema":  "ttd.uge_showcase_manifest.v1",
+    "schema_version":  "1.0.0",
+    "project":  "UGE",
+    "role":  "showcase_project_for_ttd_plugin_output",
+    "generated_at_utc":  "2026-07-10T20:18:03Z",
+    "split_targets":  {
+                          "code_project_root":  "D:/UGE",
+                          "content_plugin_project_root":  "D:/UGE_ContentExamples",
+                          "original_reference_project_root":  "E:/WarCollection2",
+                          "deprecated_project_root":  "D:/TinyToolDevelopment/WarCollection"
+                      },
+    "plugin_roots":  [
+                         "AssetPlugins",
+                         "CorePlugins",
+                         "EditorPlugins",
+                         "WidgetPlugins",
+                         "SamplePlugins",
+                         "../UGE_ContentExamples/AssetPlugins"
+                     ],
+    "source_artifacts":  {
+                             "bpj_handoff":  "D:\\UGE_ContentExamples\\Saved\\CodexEvidence\\apm_bpj_handoff.json",
+                             "content_packaging_plan":  "D:\\UGE_ContentExamples\\Saved\\CodexEvidence\\apm_compile_plan.json",
+                             "source_project":  "LyraStarterGame",
+                             "run_id":  "apm.content_packaging.8461d263d8d0"
+                         },
+    "content_packaging":  {
+                              "plan_id":  "lyra-5.4-to-uge-contentexamples-694f9c382198",
+                              "plan_hash":  "8461d263d8d00eafda40e7af5016f5d013903a55",
+                              "profile_hash":  "48b2fcf99b3fe4e9d15ddc7f3d7135aa7c40a9cf",
+                              "snapshot_hash":  "694f9c382198ad124e71a9f9638c7dab21401e70",
+                              "asset_count":  1922,
+                              "pack_count":  10,
+                              "blocker_count":  0,
+                              "review_queue_count":  0,
+                              "content_packs":  [
+                                                    {
+                                                        "name":  "LyraAudioAssets",
+                                                        "mount":  "/LyraAudioAssets",
+                                                        "asset_count":  917,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+                                                                                    "AudioModulation",
+                                                                                    "Metasound"
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraAudioAssets",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraCharacterAssets",
+                                                        "mount":  "/LyraCharacterAssets",
+                                                        "asset_count":  84,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+                                                                                    "Niagara"
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraCharacterAssets",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraExampleContent",
+                                                        "mount":  "/LyraExampleContent",
+                                                        "asset_count":  49,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraExampleContent",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraMapAssets",
+                                                        "mount":  "/LyraMapAssets",
+                                                        "asset_count":  14,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+                                                                                    "Niagara"
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraMapAssets",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraMaterialAssets",
+                                                        "mount":  "/LyraMaterialAssets",
+                                                        "asset_count":  6,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraMaterialAssets",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraSharedVisualAssets",
+                                                        "mount":  "/LyraSharedVisualAssets",
+                                                        "asset_count":  130,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraSharedVisualAssets",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraSystemAssets",
+                                                        "mount":  "/LyraSystemAssets",
+                                                        "asset_count":  9,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+                                                                                    "Niagara"
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraSystemAssets",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraUIAssets",
+                                                        "mount":  "/LyraUIAssets",
+                                                        "asset_count":  489,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+                                                                                    "CommonUI"
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraUIAssets",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraVfxAssets",
+                                                        "mount":  "/LyraVfxAssets",
+                                                        "asset_count":  144,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+                                                                                    "Niagara"
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraVfxAssets",
+                                                        "enabled_in_uge":  true
+                                                    },
+                                                    {
+                                                        "name":  "LyraWeaponAssets",
+                                                        "mount":  "/LyraWeaponAssets",
+                                                        "asset_count":  80,
+                                                        "kind":  "Content",
+                                                        "plugin_dependencies":  [
+                                                                                    "Niagara"
+                                                                                ],
+                                                        "plugin_root":  "D:/UGE_ContentExamples/AssetPlugins/LyraWeaponAssets",
+                                                        "enabled_in_uge":  true
+                                                    }
+                                                ]
+                          },
+    "legacy_composition_policy":  {
+                                      "old_blueprint_world_data_compositions_are_copied":  false,
+                                      "visible_assets_are_packaged_by_apm":  true,
+                                      "maps_are_rebuilt_from_packaged_visual_assets":  true,
+                                      "source_editor_tooling_default":  "discard",
+                                      "target_contract_source":  "bpj.implementation_intent_candidates.v1/content_packaging/composition_rebuilds"
+                                  },
+    "target_contracts":  [
+                             {
+                                 "target_architecture":  "AnimationComposition",
+                                 "implementation_kind":  "RebuildAnimationAssetAgainstTargetAnimationContracts",
+                                 "suggested_owner":  "TargetAnimation",
+                                 "uge_owner":  "D:/UGE/Plugins/GameFeatures/GameFeature_AnimationSystem",
+                                 "count":  724,
+                                 "depends_on_packs":  [
+                                                          "LyraCharacterAssets",
+                                                          "LyraSharedVisualAssets",
+                                                          "LyraWeaponAssets"
+                                                      ],
+                                 "examples":  [
+                                                  "/Game/Characters/Heroes/Mannequin/Animations/ABP_Mannequin_Base",
+                                                  "/Game/Characters/Heroes/Mannequin/Animations/ABP_Mannequin_CopyPose",
+                                                  "/Game/Characters/Heroes/Mannequin/Animations/ABP_Mannequin_Retarget",
+                                                  "/Game/Characters/Heroes/Mannequin/Animations/ABP_Mannequin_TopDown",
+                                                  "/Game/Characters/Heroes/Mannequin/Animations/Actions/AM_MF_Emote_FingerGuns",
+                                                  "/Game/Characters/Heroes/Mannequin/Animations/Actions/AM_MF_Emote_FingerGuns_Emote_MW",
+                                                  "/Game/Characters/Heroes/Mannequin/Animations/Actions/AM_MM_Dash_Backward",
+                                                  "/Game/Characters/Heroes/Mannequin/Animations/Actions/AM_MM_Dash_Forward"
+                                              ]
+                             },
+                             {
+                                 "target_architecture":  "GameplayComposition",
+                                 "implementation_kind":  "RebuildBlueprintOrGameplayAssetAgainstTargetContracts",
+                                 "suggested_owner":  "TargetGameplay",
+                                 "uge_owner":  "D:/UGE/Plugins/Core_Collection; D:/UGE/Plugins/GameFeatures",
+                                 "count":  285,
+                                 "depends_on_packs":  [
+                                                          "LyraAudioAssets",
+                                                          "LyraCharacterAssets",
+                                                          "LyraMapAssets",
+                                                          "LyraSharedVisualAssets",
+                                                          "LyraSystemAssets",
+                                                          "LyraUIAssets",
+                                                          "LyraVfxAssets",
+                                                          "LyraWeaponAssets"
+                                                      ],
+                                 "examples":  [
+                                                  "/Game/Audio/Blueprints/B_MusicManagerComponent_Base",
+                                                  "/Game/Audio/Blueprints/B_MusicManagerComponent_FE",
+                                                  "/Game/Audio/Blueprints/B_WindSystem",
+                                                  "/Game/Audio/Blueprints/GeneralAudioFunctions",
+                                                  "/Game/Audio/Blueprints/WeaponAudioMacros",
+                                                  "/Game/Audio/Sounds/Emotes/ANS_EmoteSound",
+                                                  "/Game/Audio/Sounds/Emotes/BI_EmoteSoundInterface",
+                                                  "/Game/B_LyraGameInstance"
+                                              ]
+                             },
+                             {
+                                 "target_architecture":  "UIComposition",
+                                 "implementation_kind":  "RebuildWidgetOrFrontendFlowInTargetUI",
+                                 "suggested_owner":  "TargetUI",
+                                 "uge_owner":  "D:/UGE/Plugins/Core_Collection/Source/Core_Classes",
+                                 "count":  128,
+                                 "depends_on_packs":  [
+                                                          "LyraCharacterAssets",
+                                                          "LyraSharedVisualAssets",
+                                                          "LyraUIAssets",
+                                                          "LyraWeaponAssets"
+                                                      ],
+                                 "examples":  [
+                                                  "/Game/Characters/Heroes/Abilities/W_CrouchTouchButton",
+                                                  "/Game/Characters/Heroes/Abilities/W_JumpTouchButton",
+                                                  "/Game/System/FrontEnd/B_LyraFrontEnd_Experience",
+                                                  "/Game/UI/Credits/W_Credits",
+                                                  "/Game/UI/Credits/W_TapToggleActionBar",
+                                                  "/Game/UI/Foundation/Buttons/W_LyraButton",
+                                                  "/Game/UI/Foundation/Buttons/W_LyraButtonTab",
+                                                  "/Game/UI/Foundation/Dialogs/W_ConfirmationDefault"
+                                              ]
+                             },
+                             {
+                                 "target_architecture":  "DataComposition",
+                                 "implementation_kind":  "RebuildDataAssetAgainstTargetContracts",
+                                 "suggested_owner":  "TargetData",
+                                 "uge_owner":  "D:/UGE/Plugins/Core_Collection/Source/Core_Data; D:/UGE/Plugins/AssetLoader",
+                                 "count":  64,
+                                 "depends_on_packs":  [
+                                                          "LyraAudioAssets",
+                                                          "LyraCharacterAssets",
+                                                          "LyraMapAssets",
+                                                          "LyraSharedVisualAssets",
+                                                          "LyraSystemAssets",
+                                                          "LyraUIAssets",
+                                                          "LyraVfxAssets"
+                                                      ],
+                                 "examples":  [
+                                                  "/Game/Audio/AttenuationPresets/TempITDSpatializationSourceSettings",
+                                                  "/Game/Audio/Modulation/ControlBuses/CB_Amb",
+                                                  "/Game/Audio/Modulation/ControlBuses/CB_Cinematics",
+                                                  "/Game/Audio/Modulation/ControlBuses/CB_Dialogue",
+                                                  "/Game/Audio/Modulation/ControlBuses/CB_Foley",
+                                                  "/Game/Audio/Modulation/ControlBuses/CB_Main",
+                                                  "/Game/Audio/Modulation/ControlBuses/CB_Music",
+                                                  "/Game/Audio/Modulation/ControlBuses/CB_SFX"
+                                              ]
+                             },
+                             {
+                                 "target_architecture":  "ExperienceComposition",
+                                 "implementation_kind":  "RebuildExperienceDataInTargetArchitecture",
+                                 "suggested_owner":  "TargetExperience",
+                                 "uge_owner":  "D:/UGE/Plugins/GameFeatures/GameFeature_ExperienceSystem; D:/UGE/Plugins/Core_Collection/Source/Core_Data",
+                                 "count":  25,
+                                 "depends_on_packs":  [
+                                                          "LyraCharacterAssets",
+                                                          "LyraSharedVisualAssets",
+                                                          "LyraSystemAssets",
+                                                          "LyraUIAssets",
+                                                          "LyraWeaponAssets"
+                                                      ],
+                                 "examples":  [
+                                                  "/Game/Characters/Heroes/EmptyPawnData/DefaultPawnData_EmptyPawn",
+                                                  "/Game/Characters/Heroes/SimplePawnData/SimplePawnData",
+                                                  "/Game/Environments/Gameplay/AS_InstantHeal",
+                                                  "/Game/Input/InputData_Hero",
+                                                  "/Game/Input/InputData_SimplePawn",
+                                                  "/Game/System/Playlists/DA_ExamplePlaylist",
+                                                  "/Game/System/Playlists/DA_Frontend",
+                                                  "/Game/Weapons/Tests/ShootingTarget_AbilitySet"
+                                              ]
+                             },
+                             {
+                                 "target_architecture":  "MapAssembly",
+                                 "implementation_kind":  "RebuildMapFromVisualAssetPacks",
+                                 "suggested_owner":  "TargetMapAssembly",
+                                 "uge_owner":  "D:/UGE/Content/Maps; target-native World Partition maps",
+                                 "count":  7,
+                                 "depends_on_packs":  [
+                                                          "LyraMapAssets",
+                                                          "LyraSharedVisualAssets",
+                                                          "LyraSystemAssets",
+                                                          "LyraUIAssets"
+                                                      ],
+                                 "examples":  [
+                                                  "/Game/System/DefaultEditorMap/L_DefaultEditorOverview",
+                                                  "/Game/System/DefaultEditorMap/L_DefaultEditorOverview_BuiltData",
+                                                  "/Game/System/FrontEnd/Maps/L_LyraFrontEnd",
+                                                  "/Game/System/FrontEnd/Maps/L_LyraFrontEnd_BuiltData",
+                                                  "/Game/System/TransitionMap",
+                                                  "/ShooterCore/Maps/L_ShooterGym",
+                                                  "/ShooterCore/Maps/L_ShooterPerf"
+                                              ]
+                             },
+                             {
+                                 "target_architecture":  "EquipmentComposition",
+                                 "implementation_kind":  "RebuildEquipmentDataAgainstTargetContracts",
+                                 "suggested_owner":  "TargetEquipment",
+                                 "uge_owner":  "D:/UGE/Plugins/GameFeatures/GameFeature_EquipmentSystem; D:/UGE/Plugins/GameFeatures/GameFeature_InventorySystem",
+                                 "count":  6,
+                                 "depends_on_packs":  [
+                                                          "LyraCharacterAssets",
+                                                          "LyraSharedVisualAssets",
+                                                          "LyraWeaponAssets"
+                                                      ],
+                                 "examples":  [
+                                                  "/ShooterCore/Items/HealthPickup/WeaponPickupData_Heal_Big",
+                                                  "/ShooterCore/Items/HealthPickup/WeaponPickupData_Heal_Small",
+                                                  "/ShooterCore/Weapons/NetShooter_PROTO/WeaponPickupData_NetShooter",
+                                                  "/ShooterCore/Weapons/Pistol/WeaponPickupData_Pistol",
+                                                  "/ShooterCore/Weapons/Rifle/WeaponPickupData_Rifle",
+                                                  "/ShooterCore/Weapons/Shotgun/WeaponPickupData_Shotgun"
+                                              ]
+                             },
+                             {
+                                 "target_architecture":  "EditorTooling",
+                                 "implementation_kind":  "DiscardSourceEditorTooling",
+                                 "suggested_owner":  "TargetEditorTooling",
+                                 "uge_owner":  "discard source-only editor utilities unless a new UGE editor tool is explicitly planned",
+                                 "count":  5,
+                                 "depends_on_packs":  [
+
+                                                      ],
+                                 "examples":  [
+                                                  "/Game/Audio/Sounds/EditorUtilities/UB_SetSoundWavesToBink",
+                                                  "/Game/Tools/BakedGeneratedMeshSystem/EditorActions/FindSourceMesh",
+                                                  "/Game/Tools/BakedGeneratedMeshSystem/EditorActions/SwapGeneratedActor_FromSM",
+                                                  "/Game/Tools/BakedGeneratedMeshSystem/EditorActions/SwapGeneratedActor_ToSM",
+                                                  "/Game/Tools/BakedGeneratedMeshSystem/EditorActions/SyncSourceKey"
+                                              ]
+                             }
+                         ],
+    "mcp_surface":  {
+                        "expected_routes":  [
+                                                "apm.content_packaging.scan_source.v1",
+                                                "apm.content_packaging.compile_plan.v1",
+                                                "apm.content_packaging.review_submit.v1",
+                                                "apm.content_packaging.execute_plan.v1",
+                                                "apm.content_packaging.validate.v1",
+                                                "apm.content_packaging.provenance_query.v1",
+                                                "apm.content_packaging.export_bpj_candidates.v1"
+                                            ],
+                        "current_uge_harness":  "Headless editor commandlets plus UGE automation tests; MCP E2E remains an acceptance lane when UMCP exposes these routes."
+                    },
+    "smoke_assets":  [
+                         "/LyraUIAssets/UI/Foundation/Materials/M_UI_Throbber_Base",
+                         "/GameFeature_AnimationSystem/GameFeature_AnimationSystem"
+                     ]
+}
