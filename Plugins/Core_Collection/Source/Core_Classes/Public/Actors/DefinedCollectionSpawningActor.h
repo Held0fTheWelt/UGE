@@ -34,10 +34,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Spawning)
 	ECollectionSpawnType SpawnType;
 
-#if WITH_EDITORONLY_DATA
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Spawning)
 	TSoftObjectPtr<class UActorCollectionDataAsset> DefinedCollection;
-#endif
 
 private:
 	
@@ -47,7 +45,7 @@ private:
 	/** Wird aufgerufen, wenn das Asset-Management-System bereit ist, die Assets zu laden */
 	virtual void LoadPrimaryAssets();
 
-	/** Wird für jedes einzeln geladene DataAsset gefeuert */
+	/** Wird fÃ¼r jedes einzeln geladene DataAsset gefeuert */
 	UFUNCTION()
 	void OnPrimaryAssetLoaded(class UObject* InOwner, class UObject* LoadedObject);
 
@@ -64,7 +62,7 @@ private:
 private:
 	UPROPERTY()
 	TObjectPtr<UChildActorComponent> DefinedActor;
-	// Handle damit wir den Lade-Vorgang ggf. abbrechen oder den Status prüfen können
+	// Handle damit wir den Lade-Vorgang ggf. abbrechen oder den Status prÃ¼fen kÃ¶nnen
 	TSharedPtr<FStreamableHandle> StreamHandle;
 
 	FAssetLoaderEvents AssetLoaderEvents;

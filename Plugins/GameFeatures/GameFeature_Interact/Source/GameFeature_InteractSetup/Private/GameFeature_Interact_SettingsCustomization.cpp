@@ -1,3 +1,4 @@
+#if WITH_EDITOR
 #include "GameFeature_Interact_SettingsCustomization.h"
 #include "GameFeature_Interact_Settings.h"
 #include "DetailLayoutBuilder.h"
@@ -27,7 +28,7 @@ void FGameFeature_Interact_SettingsCustomization::CustomizeDetails(IDetailLayout
 	// Immer verstecken, um doppelte Anzeige zu verhindern
 	DetailBuilder.HideProperty(DefinedDebugHandle);
 
-	// Dynamisch anzeigen, aber vollst‰ndig eingebettet (nicht manuell via ValueContent)
+	// Dynamisch anzeigen, aber vollst√§ndig eingebettet (nicht manuell via ValueContent)
 	Category.AddProperty(DefinedDebugHandle.ToSharedRef())
 		.Visibility(TAttribute<EVisibility>::Create(
 			[UseGlobalQueryHandle, GlobalDebugHandle]()
@@ -41,3 +42,4 @@ void FGameFeature_Interact_SettingsCustomization::CustomizeDetails(IDetailLayout
 				return (bUseGlobal && !bGlobal) ? EVisibility::Visible : EVisibility::Collapsed;
 			}));
 }
+#endif

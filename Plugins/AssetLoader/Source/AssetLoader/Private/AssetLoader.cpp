@@ -3,7 +3,9 @@
 #include "AssetLoader.h"
 
 #include "Modules/ModuleManager.h"
+#if WITH_EDITOR
 #include "ISettingsModule.h"
+#endif
 
 #include "AssetLoader_Settings.h"
 
@@ -16,12 +18,14 @@ void FAssetLoaderModule::StartupModule()
 	//UpdateEntityDefinitionLookupTable();
 
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
+#if WITH_EDITOR
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{
 		SettingsModule->RegisterSettings("Project", "War Collection", "Asset Loader",
 			LOCTEXT("RuntimeSettingsName", "Asset Loader"), LOCTEXT("RuntimeSettingsDescription", "Setup for Asset Loader Capabilities"),
 			GetMutableDefault<UAssetLoader_Settings>());
 	}
+#endif
 
 
 	UE_LOG(AssetLoader, Log, TEXT("Elemental_AssetLoader module has been loaded"));
@@ -29,10 +33,12 @@ void FAssetLoaderModule::StartupModule()
 
 void FAssetLoaderModule::ShutdownModule()
 {
+#if WITH_EDITOR
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{
 		SettingsModule->UnregisterSettings("Project", "War Collection", "Asset Loader");
 	}
+#endif
 	UE_LOG(AssetLoader, Log, TEXT("Elemental_AssetLoader module has been unloaded"));
 }
 

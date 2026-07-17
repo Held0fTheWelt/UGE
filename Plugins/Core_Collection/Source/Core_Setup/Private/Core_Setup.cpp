@@ -2,9 +2,11 @@
 
 #include "Core_Settings.h"
 #include "GameInstance/CoreGameInstanceDelegates.h"
+#if WITH_EDITOR
 #include "ISettingsModule.h"
+#include "ISettingsContainer.h"
+#endif
 #include "Settings/CoreSettingsLocal.h"
-#include "ISettingsContainer.h" // Add this include at the top of the file
 
 DEFINE_LOG_CATEGORY(Core_Setup);
 
@@ -20,21 +22,25 @@ void FCore_Setup::StartupModule()
 		}
 	}));
 
+#if WITH_EDITOR
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{
 		SettingsModule->RegisterSettings("Project", "War Collection", "Core Settings",
 			LOCTEXT("RuntimeSettingsName", "Core Settings"), LOCTEXT("RuntimeSettingsDescription", "Core Setup for Classes"),
 			GetMutableDefault<UCore_Settings>());
 	}
+#endif
 	UE_LOG(Core_Setup, Log, TEXT("Core_Setup module has been loaded"));
 }
 
 void FCore_Setup::ShutdownModule()
 {
+#if WITH_EDITOR
 	if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
 	{
 		SettingsModule->UnregisterSettings("Project", "War Collection", "Core Settings");
 	}
+#endif
 
 	UE_LOG(Core_Setup, Log, TEXT("Core_Setup module has been unloaded"));
 }

@@ -45,6 +45,11 @@ public class InputSystem : ModuleRules
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
+
+		if (Target.bBuildEditor)
+		{
+			PrivateDependencyModuleNames.Add("Settings");
+		}
 		
 		
 		DynamicallyLoadedModuleNames.AddRange(

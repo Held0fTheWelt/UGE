@@ -69,9 +69,7 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Camera Control")
 	void ZoomCamera(float Value);
 
-#if WITH_EDITOR
 	/** Called to update the humanoid pawn's input settings in the editor */
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Humanoid Actions Owner")
 	FName GetFriendlyName() const;
-#endif // WITH_EDITOR
 };

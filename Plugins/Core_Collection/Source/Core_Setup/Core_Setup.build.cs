@@ -54,6 +54,11 @@ public class Core_Setup : ModuleRules
 			}
             );
 
+        if (Target.bBuildEditor)
+        {
+            PrivateDependencyModuleNames.Add("Settings");
+        }
+
 
         DynamicallyLoadedModuleNames.AddRange(
             new string[]

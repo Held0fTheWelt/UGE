@@ -64,7 +64,9 @@ ACombinedWheeledVehiclePawn::ACombinedWheeledVehiclePawn()
 			("Time", GET_CURRENT_TIME));
 	}
 	
+#if WITH_EDITORONLY_DATA
 	ArrowConfigurationAsset = nullptr;
+#endif
 
 	DataAssetIdentifier = FName(TEXT("BaseActorDefinition"));
 

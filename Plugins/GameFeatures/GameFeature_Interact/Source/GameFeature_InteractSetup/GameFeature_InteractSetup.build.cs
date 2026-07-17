@@ -40,6 +40,11 @@ public class GameFeature_InteractSetup : ModuleRules
 			}
             );
 
+        if (Target.bBuildEditor)
+        {
+            PrivateDependencyModuleNames.AddRange(new string[] { "PropertyEditor", "Settings" });
+        }
+
 
         DynamicallyLoadedModuleNames.AddRange(
             new string[]

@@ -6,6 +6,8 @@
 #include "Components/GameStateComponent.h"
 #include "PlayerSpawningGameStateComponent.generated.h"
 
+class APlayerStart;
+
 /**
  * 
  */
