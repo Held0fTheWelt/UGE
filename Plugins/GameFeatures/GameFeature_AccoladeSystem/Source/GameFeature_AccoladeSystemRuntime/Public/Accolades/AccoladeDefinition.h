@@ -32,8 +32,8 @@ struct FAccoladeDefinitionRow : public FTableRowBase
 
 	/** Icon shown in the toast (Texture, Material, or SlateTextureAtlasInterface). */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (DisplayThumbnail = "true",
-		AllowedClasses = "Texture,MaterialInterface,SlateTextureAtlasInterface",
-		DisallowedClasses = "MediaTexture"))
+		AllowedClasses = "/Script/Engine.Texture,/Script/Engine.MaterialInterface,/Script/Engine.SlateTextureAtlasInterface",
+		DisallowedClasses = "/Script/MediaAssets.MediaTexture"))
 	TSoftObjectPtr<UObject> Icon;
 
 	/** How long (seconds) to display the toast. */
@@ -81,8 +81,8 @@ public:
 	TObjectPtr<USoundBase> Sound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayThumbnail = "true",
-		AllowedClasses = "Texture,MaterialInterface,SlateTextureAtlasInterface",
-		DisallowedClasses = "MediaTexture"))
+		AllowedClasses = "/Script/Engine.Texture,/Script/Engine.MaterialInterface,/Script/Engine.SlateTextureAtlasInterface",
+		DisallowedClasses = "/Script/MediaAssets.MediaTexture"))
 	TObjectPtr<UObject> Icon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

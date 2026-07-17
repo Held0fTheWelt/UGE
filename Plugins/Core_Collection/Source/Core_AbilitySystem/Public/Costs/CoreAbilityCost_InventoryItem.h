@@ -43,7 +43,7 @@ protected:
 	FScalableFloat Quantity;
 
 	/** Which item to consume */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=AbilityCost, meta=(MustImplement="Interface"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=AbilityCost, meta=(MustImplement="/Script/CoreUObject.Interface"))
 	TSubclassOf<UObject> ItemDefinition;
 
 	/** Returns the inventory manager component (CoreInventoryManagerComponent) from the ability's controller when GameFeature_InventorySystemRuntime is loaded; otherwise nullptr. */

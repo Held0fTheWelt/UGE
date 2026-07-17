@@ -1,0 +1,34 @@
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Components/ActorComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "InputModifiers.h"
+#include "GameplayTagContainer.h"
+#include "ShooterCoreCompatibilityTypes.generated.h"
+
+UCLASS(BlueprintType, EditInlineNew)
+class SHOOTERCORERUNTIME_API UAimAssistInputModifier : public UInputModifier
+{
+    GENERATED_BODY()
+};
+
+UCLASS(BlueprintType, Blueprintable, ClassGroup=(AimAssist), meta=(BlueprintSpawnableComponent))
+class SHOOTERCORERUNTIME_API UAimAssistTargetComponent : public UCapsuleComponent
+{
+    GENERATED_BODY()
+};
+
+UCLASS(BlueprintType, Blueprintable, ClassGroup=(AimAssist), meta=(BlueprintSpawnableComponent))
+class SHOOTERCORERUNTIME_API UAimAssistTargetManagerComponent : public UActorComponent
+{
+    GENERATED_BODY()
+};
+
+USTRUCT(BlueprintType)
+struct SHOOTERCORERUNTIME_API FLyraControlPointStatusMessage
+{
+    GENERATED_BODY()
+    UPROPERTY(EditAnywhere, BlueprintReadWrite) FGameplayTag ControlPointTag;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite) int32 TeamId = INDEX_NONE;
+};

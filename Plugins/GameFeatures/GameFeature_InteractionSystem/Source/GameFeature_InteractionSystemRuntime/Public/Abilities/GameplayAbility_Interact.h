@@ -13,12 +13,12 @@ struct FGameplayEventData;
 
 /** Gameplay ability used for interacting with objects. Registers GrantNearbyInteraction and WaitForInteractableTargets; TriggerInteraction runs the first available option. */
 UCLASS(Abstract)
-class GAMEFEATURE_INTERACTIONSYSTEMRUNTIME_API UGameplayAbility_Interact : public UGameplayAbility
+class GAMEFEATURE_INTERACTIONSYSTEMRUNTIME_API UCoreGameplayAbility_Interact : public UGameplayAbility
 {
 	GENERATED_BODY()
 
 public:
-	UGameplayAbility_Interact(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	UCoreGameplayAbility_Interact(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 
 	/** Applies the first available interaction option (call from input or UI). */
 	UFUNCTION(BlueprintCallable, Category = "Interaction")

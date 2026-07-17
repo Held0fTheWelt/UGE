@@ -14,7 +14,7 @@ GAS-based interaction system. Detects `IInteractableTarget` objects near the pla
 ### Abilities
 | Class | Purpose |
 |-------|---------|
-| `UGameplayAbility_Interact` | **Abstract** `UGameplayAbility` — base class for interaction abilities; holds `CurrentOptions` (`TArray<FInteractionOption>`); calls `TriggerInteraction()`; subclass in Blueprint |
+| `UCoreGameplayAbility_Interact` | **Abstract** `UGameplayAbility` — base class for interaction abilities; holds `CurrentOptions` (`TArray<FInteractionOption>`); calls `TriggerInteraction()`; subclass in Blueprint |
 | `AGameplayAbilityTargetActor_Interact` | Extends `AGameplayAbilityTargetActor_Trace` — intermediate base for interaction targeting |
 
 ### Ability Tasks
@@ -40,7 +40,7 @@ GAS-based interaction system. Detects `IInteractableTarget` objects near the pla
 
 | Where | What |
 |-------|------|
-| **Pawn (via ASC)** | Blueprint subclass of `UGameplayAbility_Interact` as a startup ability |
+| **Pawn (via ASC)** | Blueprint subclass of `UCoreGameplayAbility_Interact` as a startup ability |
 | **Interactable actor** | Implements `IInteractableTarget` (e.g. via `UWorldPickupComponent`) |
 
 ---

@@ -157,6 +157,10 @@
 			"Enabled": true
 		},
 		{
+			"Name": "LyraContentCompatibility",
+			"Enabled": true
+		},
+		{
 			"Name": "VehiclesContent",
 			"Enabled": true
 		}

@@ -16,14 +16,14 @@
 
 UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG_Ability_Interaction_Activate, "Ability.Interaction.Activate");
 
-UGameplayAbility_Interact::UGameplayAbility_Interact(const FObjectInitializer& ObjectInitializer)
+UCoreGameplayAbility_Interact::UCoreGameplayAbility_Interact(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 	InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
 	NetExecutionPolicy = EGameplayAbilityNetExecutionPolicy::LocalPredicted;
 }
 
-void UGameplayAbility_Interact::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
+void UCoreGameplayAbility_Interact::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 
@@ -60,19 +60,19 @@ void UGameplayAbility_Interact::ActivateAbility(const FGameplayAbilitySpecHandle
 		this, InteractionQuery, TraceProfile, StartLocation, InteractionScanRange, InteractionScanRate, false);
 	if (WaitTask)
 	{
-		WaitTask->InteractableObjectsChanged.AddDynamic(this, &UGameplayAbility_Interact::UpdateInteractions);
+		WaitTask->InteractableObjectsChanged.AddDynamic(this, &UCoreGameplayAbility_Interact::UpdateInteractions);
 		WaitTask->ReadyForActivation();
 	}
 
 	// Ability stays active; tasks run until ability is ended
 }
 
-void UGameplayAbility_Interact::UpdateInteractions(const TArray<FInteractionOption>& InteractiveOptions)
+void UCoreGameplayAbility_Interact::UpdateInteractions(const TArray<FInteractionOption>& InteractiveOptions)
 {
 	CurrentOptions = InteractiveOptions;
 }
 
-void UGameplayAbility_Interact::TriggerInteraction()
+void UCoreGameplayAbility_Interact::TriggerInteraction()
 {
 	if (CurrentOptions.Num() == 0)
 	{
