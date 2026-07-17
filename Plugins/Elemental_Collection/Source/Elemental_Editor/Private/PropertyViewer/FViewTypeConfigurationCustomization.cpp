@@ -4,7 +4,7 @@
 #include "Structs/ViewTypeConfiguration.h"
 #include "Widgets/Text/STextBlock.h"
 #include "PropertyCustomizationHelpers.h"
-#include "EditorStyleSet.h"
+#include "Styling/AppStyle.h"
 
 #define LOCTEXT_NAMESPACE "FViewTypeConfigurationCustomization"
 
@@ -37,7 +37,7 @@ void FViewTypeConfigurationCustomization::CustomizeHeader(
         [
             SNew(STextBlock)
                 .Text(EnumDisplayName)
-                .Font(FEditorStyle::GetFontStyle("PropertyWindow.NormalFont"))
+                .Font(FAppStyle::GetFontStyle("PropertyWindow.NormalFont"))
         ];
 }
 

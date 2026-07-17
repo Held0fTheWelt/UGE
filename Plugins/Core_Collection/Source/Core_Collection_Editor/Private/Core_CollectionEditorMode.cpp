@@ -2,7 +2,7 @@
 
 #include "Core_CollectionEditorMode.h"
 #include "Core_CollectionEditorModeToolkit.h"
-#include "EdModeInteractiveToolsContext.h"
+#include "Tools/EdModeInteractiveToolsContext.h"
 #include "InteractiveToolManager.h"
 #include "Core_CollectionEditorModeCommands.h"
 
