@@ -20,7 +20,7 @@ class ELEMENTAL_INTERFACES_API IHumanoidReplicationInterface
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, Category = "Humanoid|Replication")
+	UFUNCTION(BlueprintCallable, Category = "Humanoid|Replication", meta = (ScriptName = "UpdateHumanoidSharedReplication"))
 	virtual bool UpdateSharedReplication() { return false; }
 
 	/** Applies replicated acceleration (e.g. from FastSharedReplication). Engine's UCharacterMovementComponent::Acceleration is protected; implement in character to apply via own movement component if needed. */

@@ -6,12 +6,12 @@ DEFINE_LOG_CATEGORY(EntityCoreRuntime);
 
 void FEntityCoreRuntime::StartupModule()
 {
-	UE_LOG(EntityCoreRuntime, Warning, TEXT("EntityCoreRuntime module has been loaded"));
+	UE_LOG(EntityCoreRuntime, Log, TEXT("EntityCoreRuntime module has been loaded"));
 }
 
 void FEntityCoreRuntime::ShutdownModule()
 {
-	UE_LOG(EntityCoreRuntime, Warning, TEXT("EntityCoreRuntime module has been unloaded"));
+	UE_LOG(EntityCoreRuntime, Log, TEXT("EntityCoreRuntime module has been unloaded"));
 }
 
 #undef LOCTEXT_NAMESPACE

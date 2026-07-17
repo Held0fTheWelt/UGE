@@ -9,7 +9,7 @@
  * @param AssetIndex    The index into the original AssetPaths array
  */
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(
-    FOnPrimaryAssetLoaded,
+    FOnAssetLoaderPrimaryAssetLoaded,
     UObject*, Owner,
     UObject*, LoadedObject
 );
@@ -31,7 +31,7 @@ struct FAssetLoaderEvents
 
 public:
     /** Delegate when each AssetDefinition object is loaded */
-    FOnPrimaryAssetLoaded            OnPrimaryAssetLoaded;
+    FOnAssetLoaderPrimaryAssetLoaded OnPrimaryAssetLoaded;
 
     /** Delegate when the Definition PrimaryAsset could not be loaded */
     FOnPrimaryAssetClassNotFound     OnPrimaryAssetClassNotFound;

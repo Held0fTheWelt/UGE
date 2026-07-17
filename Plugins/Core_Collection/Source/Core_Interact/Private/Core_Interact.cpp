@@ -6,12 +6,12 @@ DEFINE_LOG_CATEGORY(Core_Interact);
 
 void FCore_Interact::StartupModule()
 {
-	UE_LOG(Core_Interact, Warning, TEXT("Core_Interact module has been loaded"));
+	UE_LOG(Core_Interact, Log, TEXT("Core_Interact module has been loaded"));
 }
 
 void FCore_Interact::ShutdownModule()
 {
-	UE_LOG(Core_Interact, Warning, TEXT("Core_Interact module has been unloaded"));
+	UE_LOG(Core_Interact, Log, TEXT("Core_Interact module has been unloaded"));
 }
 
 #undef LOCTEXT_NAMESPACE
