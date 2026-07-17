@@ -7,10 +7,10 @@ public class LyraGame : ModuleRules
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
         PublicDependencyModuleNames.AddRange(new[]
         {
-            "Core", "CoreUObject", "Engine", "UMG", "AIModule", "GameplayAbilities", "GameplayTasks", "GameFeatures",
+            "Core", "CoreUObject", "Engine", "UMG", "Slate", "SlateCore", "AIModule", "GameplayTags", "GameplayAbilities", "GameplayTasks", "GameFeatures",
             "ModularGameplay", "EnhancedInput", "CommonUI",
             "GameFeature_InventorySystemRuntime", "GameFeature_EquipmentSystemRuntime",
-            "GameFeature_FeedbackSystemRuntime", "Core_Classes"
+            "GameFeature_FeedbackSystemRuntime", "GameFeature_CosmeticsSystemRuntime", "Core_Classes"
         });
     }
 }

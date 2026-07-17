@@ -20,6 +20,7 @@
     { "Name": "CommonUI", "Enabled": true },
     { "Name": "Core_Collection", "Enabled": true },
     { "Name": "GameFeature_InventorySystem", "Enabled": true },
+    { "Name": "GameFeature_CosmeticsSystem", "Enabled": true },
     { "Name": "GameFeature_EquipmentSystem", "Enabled": true },
     { "Name": "GameFeature_FeedbackSystem", "Enabled": true }
   ]
