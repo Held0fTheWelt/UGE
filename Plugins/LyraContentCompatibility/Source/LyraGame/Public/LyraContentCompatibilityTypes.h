@@ -10,6 +10,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "InputModifiers.h"
 #include "InventoryItemDefinition.h"
+#include "Abilities/GameplayAbility_FromEquipment.h"
 #include "Equipment/EquipmentInstance.h"
 #include "NumberPops/NumberPopComponent.h"
 #include "UI/CoreActivatableWidget.h"
@@ -134,6 +135,12 @@ class LYRAGAME_API ALyraPlayerBotController : public AAIController
 
 UCLASS(BlueprintType, Blueprintable)
 class LYRAGAME_API ULyraRangedWeaponInstance : public UEquipmentInstance
+{
+    GENERATED_BODY()
+};
+
+UCLASS(BlueprintType, Blueprintable)
+class LYRAGAME_API ULyraGameplayAbility_RangedWeapon : public UGameplayAbility_FromEquipment
 {
     GENERATED_BODY()
 };
