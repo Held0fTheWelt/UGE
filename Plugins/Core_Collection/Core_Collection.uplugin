@@ -86,6 +86,11 @@
 			"LoadingPhase": "Default"
 		},
 		{
+			"Name": "Core_Physics",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
 			"name": "Core_Interact",
 			"type": "Runtime",
 			"loadingPhase": "Default"
